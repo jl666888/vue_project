@@ -18,6 +18,7 @@ export default {
     return {
       uri: ["/classroom", "/message", "/center"],
       active: 0,
+      
     };
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
   },
   watch: {
     $route: function (val) {
-      this.active = this.uri.indexOf(val.path);
+      this.active = this.uri.indexOf(val.path) ;
     },
   },
 };
