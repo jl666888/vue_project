@@ -39,7 +39,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:14px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -51,7 +51,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -63,7 +63,7 @@
                   <div>
                 
                 <!-- swiper图片位置 -->
-                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -154,7 +154,7 @@ export default Vue.extend({
   background: #f4f4f4;
 }
 .content {
-  width: 120px;
+  width: 124px;
   font-size: 12px;
   overflow: hidden;
   white-space: nowrap;
