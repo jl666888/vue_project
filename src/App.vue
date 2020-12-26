@@ -17,10 +17,7 @@ export default {
   },
   created() {
     //获取用户信息
-    this.$http.post("/api/getUser").then((ret) => {
-      console.log(ret);
-      this.$store.commit("setUsers", ret.data);
-    });
+   
   },
 };
 </script>
