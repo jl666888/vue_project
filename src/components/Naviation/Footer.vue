@@ -24,6 +24,9 @@ export default {
   methods: {
     setActive(val) {
       this.$router.push(this.uri[this.active]);
+      if(this.active == 0){
+        this.$router.push({path:this.uri[this.active],query:{location:window.localStorage.getItem('query')}})
+      }
     },
   },
   created() {
@@ -32,6 +35,7 @@ export default {
   watch: {
     $route: function (val) {
       this.active = this.uri.indexOf(val.path) ;
+      
     },
   },
 };
