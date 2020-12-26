@@ -2,8 +2,8 @@
   <div>
     <div class="cnt">
       <div class="cnt_1">
-        <p>用户名称：<span>耐寒教育</span></p>
-        <p>用户手机：<span>123231231</span></p>
+        <p>用户名称：<span>{{user_name || '无'}}</span></p>
+        <p>用户手机：<span>{{user_phone || '无'}}</span></p>
       </div>
       <div class="cnt_2">
         <div>
@@ -132,6 +132,8 @@ export default {
       coupons1: ["选择学员"],
       youVal: 0,
       // Buy,
+      user_name:'',
+      user_phone:'',
     };
   },
   created() {
@@ -140,6 +142,11 @@ export default {
       this.dataList = ret.data[0];
       this.$store.commit("setBuyData", this.dataList);
     });
+    if(JSON.parse(window.localStorage.users)){
+      let users = JSON.parse(window.localStorage.users)
+      this.user_name = users.username;
+      this.user_phone = users.phone
+    }
   },
   methods: {
     Teacher: function () {

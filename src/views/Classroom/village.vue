@@ -29,7 +29,7 @@ export default {
     };
   },
   created() {
-    this.$http.get("http://127.0.0.1/BK_2003/getLocation.php").then((ret) => {
+    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool").then((ret) => {
       ret.forEach((v, k) => {
         if (k < 10) {
           this.arr.push(v);
