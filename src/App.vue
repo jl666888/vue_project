@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="text">已登入</div>
-    <div v-else>未登录</div>
+    
     <router-view />
     <Footer v-show="$store.state.bool"></Footer>
   </div>

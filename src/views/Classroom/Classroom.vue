@@ -107,6 +107,7 @@ export default Vue.extend({
       this.$store.commit('setGrid',this.grid)
       this.$store.commit('setShow',true)
       this.location = this.$route.query.location;
+      
   },
   mounted(){
  new Swiper('.swiper-container', {

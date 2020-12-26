@@ -31,6 +31,7 @@ export default {
     fun:function(val){
       // console.log(val)
       this.$router.push({path:'/classroom',query:{location:val.name}})
+      window.localStorage.setItem('query',val.name)
     },
     fun2:function(){
       this.$router.push({path:'/classroom',query:{location:''}})
