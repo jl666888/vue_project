@@ -30,12 +30,15 @@
         <van-nav-bar
           left-text="选择教师"
           :right-text="
-            this.$store.state.teach.city + ' ' + this.$store.state.teach.name
+            !this.$store.state.teach.city
+              ? 'XXX'
+              : this.$store.state.teach.city +
+                  ' ' +
+                  this.$store.state.teach.name || 'XXX'
           "
           border
           @click-right="onClickRight1"
         />
-        <!-- <van-coupon-cell title="选择校区及教师" @click="Teacher" /> -->
       </div>
       <div style="margin-top: 5px">
         <van-coupon-cell
@@ -77,16 +80,11 @@
         />
       </van-swipe-cell>
     </div>
-    <div>
-      <van-submit-bar
-        :price="dataList.price * this.$store.state.stuNumber"
-        button-text="立即支付"
-        @submit="onSubmit"
-      />
-    </div>
+    <Submit></Submit>
   </div>
 </template>
 <script>
+import Submit from "@/components/Buy/Submit";
 import Vue from "vue";
 import {
   NavBar,
@@ -94,13 +92,11 @@ import {
   CouponCell,
   CouponList,
   Divider,
-  SubmitBar,
   SwipeCell,
   Cell,
   Icon,
 } from "vant";
 Vue.use(Icon);
-Vue.use(SubmitBar);
 Vue.use(SwipeCell);
 Vue.use(Divider);
 Vue.use(CouponCell);
@@ -108,6 +104,7 @@ Vue.use(CouponList);
 Vue.use(NavBar);
 Vue.use(Cell);
 Vue.use(Toast);
+
 const coupon = {
   available: 1,
   condition: "无使用门槛\n最多优惠12元",
@@ -119,9 +116,14 @@ const coupon = {
   valueDesc: "200",
   unitDesc: "元",
 };
+// let Buy = JSON.parse(localStorage.getItem("Buy"));
 export default {
+  components: {
+    Submit,
+  },
   data() {
     return {
+      show: false,
       dataList: {},
       showList: false,
       chosenCoupon: -1,
@@ -129,19 +131,21 @@ export default {
       disabledCoupons: [coupon],
       coupons1: ["选择学员"],
       youVal: 0,
+      // Buy,
     };
   },
   created() {
     this.$store.commit("setShow", false);
     this.$http.get("http://127.0.0.1/getAirPortInfo.php").then((ret) => {
       this.dataList = ret.data.data[0];
+      this.$store.commit("setBuyData", this.dataList);
     });
   },
   methods: {
     Teacher: function () {
       this.$router.push("/buy/teacher");
     },
-    onSubmit: function () {},
+
     onChange(index) {
       if (this.$store.state.stuNumber) {
         this.youVal = this.coupons[index].value;

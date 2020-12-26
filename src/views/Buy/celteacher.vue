@@ -87,6 +87,10 @@ export default {
         name: this.teacherName || this.teacher[0].realname,
         city: this.cityName || this.city[0].name,
       });
+      // localStorage.setItem(
+      //   "Buy",
+      //   JSON.stringify({ teach1: this.$store.state.teach })
+      // );
       this.$router.push("/buy/buy1");
     },
   },

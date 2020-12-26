@@ -17,12 +17,13 @@
 </template>
 <script>
 import Vue from "vue";
-import { NavBar, Checkbox, CheckboxGroup, Tag, Button } from "vant";
+import { NavBar, Checkbox, CheckboxGroup, Tag, Button, Toast } from "vant";
 Vue.use(Tag);
 Vue.use(Button);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(NavBar);
+Vue.use(Toast);
 export default {
   data() {
     return {
@@ -41,6 +42,11 @@ export default {
       this.$router.push("/buy/addstu");
     },
     Submit() {
+      if (!this.result.length) {
+        Toast.fail("请选择学员");
+        return;
+      }
+      localStorage.setItem("Buy", JSON.stringify({ result: this.result }));
       this.$store.commit("setStuNum", this.result.length);
       this.$router.push("/buy/buy1");
     },

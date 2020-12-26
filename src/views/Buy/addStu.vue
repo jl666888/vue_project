@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <!-- <img src="data:image/jpeg;base64,/9j/4QCERXhpZgAATU0AKgAAAAg" /> -->
       <div class="pic"><van-uploader :after-read="afterRead" /></div>
     </div>
     <div>
