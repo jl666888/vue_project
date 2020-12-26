@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view />
-    <Footer></Footer>
+    <Footer v-show="$store.state.bool"></Footer>
   </div>
 </template>
 <script>
