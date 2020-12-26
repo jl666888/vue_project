@@ -22,18 +22,16 @@ export default {
   },
   methods: {
     setActive(val) {
-      if (this.active == 0) {
-        this.$router.push({
-          path: this.uri[this.active],
-          query: { location: localStorage.getItem("query") },
-        });
-      } else {
-        this.$router.push(this.uri[this.active]);
+      if(this.active == 0){
+        this.$router.push({path:this.uri[this.active],query:{location:window.localStorage.getItem('query')}})
+      }else{
+      this.$router.push(this.uri[this.active]);
       }
     },
   },
   created() {
     this.active = this.uri.indexOf(this.$route.path);
+    
   },
   watch: {
     $route: function (val) {

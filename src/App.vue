@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
+    
     <router-view />
     <Footer v-show="$store.state.bool"></Footer>
   </div>
@@ -17,12 +18,12 @@ export default {
   },
   created() {
     //获取用户信息
-    this.$http.post("/api/getUser").then((ret) => {
-      console.log(ret);
-      this.$store.commit("setUsers", ret.data);
-    });
+   
   },
 };
 </script>
 <style lang="scss">
+[v-cloak]{
+  display:none
+}
 </style>

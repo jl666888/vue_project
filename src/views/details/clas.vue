@@ -193,10 +193,14 @@ export default {
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
     this.numbers = this.$store.state.titleArr[this.$route.query.key].numbers;
-    this.$http.get("http://127.0.0.1/BK_2003/getTeacher.php").then((ret) => {
-      this.teacher = ret;
-      this.teacherName = this.teacher[this.id].realname;
-    });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
+      )
+      .then((ret) => {
+        this.teacher = ret;
+        this.teacherName = this.teacher[this.id].realname;
+      });
     this.id = this.$route.query.key;
   },
   methods: {
