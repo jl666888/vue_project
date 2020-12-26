@@ -5,8 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    bool:true,
   },
   mutations: {
+    setShow(state,val){
+      state.bool = val;
+    }
   },
   actions: {
   },
