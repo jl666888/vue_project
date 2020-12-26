@@ -38,7 +38,7 @@
             slot="icon"
             size="1.9rem"
           />
-        学员管理
+          学员管理
         </div>
         <div @click="coupon1" class="myList">
           <van-icon
@@ -49,11 +49,7 @@
           优惠券
         </div>
         <div @click="consult1" class="myList">
-          <van-icon
-            class="iconfont icon-zixun"
-            slot="icon"
-            size="1.9rem"
-          />
+          <van-icon class="iconfont icon-zixun" slot="icon" size="1.9rem" />
           立即咨询
         </div>
         <div @click="about1" class="myList">
@@ -62,10 +58,8 @@
             slot="icon"
             size="1.9rem"
           />
-          学员管理
+          关于我们
         </div>
-
-        
       </div>
       <van-button type="info" size="large" class="button">退出登录</van-button>
     </div>
@@ -197,17 +191,15 @@ export default {
     height: 50px;
     border-bottom: 1px solid #f1f1f1;
     margin-left: 15px;
-    
-    van-icon{
-      padding-right:15px ;
+
+    van-icon {
+      padding-right: 15px;
     }
   }
- 
 }
-.button{
+.button {
   width: 380px;
   margin-top: 10px;
   margin-left: 18px;
- 
 }
 </style>
