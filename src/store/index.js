@@ -10,6 +10,11 @@ export default new Vuex.Store({
     stuNumber:0,
     teach:teach1 ? teach1 : {name:'',city:''},
     buyData:{},
+    grid:[],
+    defaltArr:[],
+    titleArr:[],
+    token:'',
+    users:{}
   },
   mutations: {
     setShow(state,val){
@@ -26,6 +31,26 @@ export default new Vuex.Store({
     },
     setBuyData:function(state,val){
       state.buyData = val;
+    },
+    setGrid:function(state,val){
+      state.grid = val;
+      localStorage.setItem('grid',JSON.stringify(val))
+    },
+    setDefalt:function(state,val){
+      state.defaltArr = val;
+      localStorage.setItem('defaltArr',JSON.stringify(val))
+    },
+    setTitle:function(state,val){
+      state.titleArr = val;
+      localStorage.setItem('titleArr',JSON.stringify(val))
+    },
+    setToken:function(state,val){
+      state.token = val;
+      window.localStorage.setItem('token',val)
+    },
+    setUsers:function(state,val){
+      state.users = val
+      window.localStorage.setItem('users',JSON.stringify(val))
     }
   },
   actions: {
