@@ -106,7 +106,7 @@ export default Vue.extend({
   created(){
       this.$store.commit('setGrid',this.grid)
       this.$store.commit('setShow',true)
-      this.location = this.$route.query.location;
+      this.location = window.localStorage.getItem('query');
       
   },
   mounted(){
