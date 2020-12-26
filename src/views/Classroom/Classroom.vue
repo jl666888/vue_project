@@ -39,7 +39,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:14px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -51,7 +51,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -63,7 +63,7 @@
                   <div>
                 
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:120px;display:block" :src="val.pic" @click="swiperImg(key2)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -85,10 +85,10 @@
 <script>
 import Vue from "vue";
 import { Swipe, SwipeItem, Grid, GridItem } from "vant";
-import Swiper from 'swiper'
-import 'swiper/swiper-bundle.min.css'
-import '@/assets/icon/iconfont.css'
-import '@/assets/img/iconfont.css'
+import Swiper from "swiper";
+import "swiper/swiper-bundle.min.css";
+import "@/assets/icon/iconfont.css";
+import "@/assets/img/iconfont.css";
 
 Vue.use(Swipe);
 Vue.use(SwipeItem);
@@ -96,45 +96,44 @@ Vue.use(Grid);
 Vue.use(GridItem);
 
 export default Vue.extend({
-  data: function() {
+  data: function () {
     return {
       grid: ["高校晚辅导", "周末精品班", "一对一", "搜索"],
       one: "",
-      location:''
+      location: "",
     };
   },
-  created(){
-      this.$store.commit('setGrid',this.grid)
-      this.$store.commit('setShow',true)
-      this.location = window.localStorage.getItem('query');
-      
+  created() {
+    this.$store.commit("setGrid", this.grid);
+    this.$store.commit("setShow", true);
+    this.location = window.localStorage.getItem("query");
   },
-  mounted(){
- new Swiper('.swiper-container', {
+  mounted() {
+    new Swiper(".swiper-container", {
       slidesPerView: 3,
       spaceBetween: 30,
       freeMode: true,
       pagination: {
-        el: '.swiper-pagination',
+        el: ".swiper-pagination",
         clickable: true,
       },
     });
   },
   methods: {
-    Grid: function(val) {
+    Grid: function (val) {
       if (this.grid.indexOf(val) !== 3) {
         this.$router.push({
           path: "/classroom/efficient",
-          query: { id: this.grid.indexOf(val) }
+          query: { id: this.grid.indexOf(val) },
         });
-      }else{
+      } else {
         this.$router.push("/classroom/search");
       }
     },
-    swiperImg:function(key){
-      this.$router.push({path:'/details/clas',query:{key:key}})
-    }
-  }
+    swiperImg: function (key) {
+      this.$router.push({ path: "/details/clas", query: { key: key } });
+    },
+  },
 });
 </script>
 
@@ -150,24 +149,24 @@ export default Vue.extend({
   background-color: #39a9ed;
   float: left;
 }
-.my-swipe .van-swipe-item[data-v-1ec788a6]{
-  line-height:60px;
-  background:#f4f4f4
+.my-swipe .van-swipe-item[data-v-1ec788a6] {
+  line-height: 60px;
+  background: #f4f4f4;
 }
-.content{
-  width:126px;
-  font-size:12px;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  background:#f4f4f4;
-  padding-top:10px; 
+.content {
+  width: 120px;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: #f4f4f4;
+  padding-top: 10px;
 }
-.iconfont{
-  text-align:center;
+.iconfont {
+  text-align: center;
 }
-.van-grid-item__content{
-  padding:0 !important;
+.van-grid-item__content {
+  padding: 0 !important;
 }
 </style>
 
