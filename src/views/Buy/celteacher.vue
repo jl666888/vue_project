@@ -57,20 +57,14 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
-    this.$http.get("http://127.0.0.1/getTeacher.php").then((ret) => {
-      //   console.log(ret.data);
-      if (ret.status == 200) {
-        // this.teacher = ret.data;
-        for (var i = 1; i < 7; i++) {
-          this.teacher.push(ret.data[i]);
-        }
+    this.$http.get("http://127.0.0.1/BK_2003/getTeacher.php").then((ret) => {
+      for (var i = 1; i < 7; i++) {
+        this.teacher.push(ret[i]);
       }
     });
-    this.$http.get("http://127.0.0.1/getLocation.php").then((ret) => {
-      if (ret.status == 200) {
-        for (var i = 1; i < 11; i++) {
-          this.city.push(ret.data[i]);
-        }
+    this.$http.get("http://127.0.0.1/BK_2003/getLocation.php").then((ret) => {
+      for (var i = 1; i < 11; i++) {
+        this.city.push(ret[i]);
       }
     });
   },
