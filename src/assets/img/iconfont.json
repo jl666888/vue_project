@@ -1,0 +1,37 @@
+{
+  "id": "2279629",
+  "name": "Vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4075980",
+      "name": "班会",
+      "font_class": "img0",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "7037114",
+      "name": "班级圈",
+      "font_class": "img1",
+      "unicode": "e711",
+      "unicode_decimal": 59153
+    },
+    {
+      "icon_id": "17165351",
+      "name": "班级考勤",
+      "font_class": "img2",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
+      "icon_id": "18269566",
+      "name": "班组活动",
+      "font_class": "img3",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}

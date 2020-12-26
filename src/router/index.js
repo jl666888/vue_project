@@ -5,6 +5,8 @@ import ClassroomRouter from './Classroom'
 import MessageRouter from './Message'
 import DetailsRouter from './Details'
 import BuyRouter from './Buy'
+import Login from './Login'
+import register from './register'
 Vue.use(VueRouter)
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -16,11 +18,13 @@ const routes = [
     // component: Classroom
     redirect:'/classroom'
   },
+  Login,
   ...BuyRouter,
   ...CenterRouter,
   ...ClassroomRouter,
   MessageRouter,
   ...DetailsRouter,
+  register
 ]
 
 const router = new VueRouter({
