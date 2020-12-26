@@ -137,7 +137,7 @@ export default {
   created() {
     this.$store.commit("setShow", false);
     this.$http.get("http://127.0.0.1/BK_2003/getAirPortInfo.php").then((ret) => {
-      this.dataList = ret.data.data[0];
+      this.dataList = ret.data[0];
       this.$store.commit("setBuyData", this.dataList);
     });
   },

@@ -27,10 +27,10 @@ export default {
   },
   methods: {
     suc: function () {
-      //   this.$router.push("/center/going");
+      this.$router.push("/center/going");
     },
     back() {
-      //   this.$router.push("/classroom");
+      this.$router.push("/classroom");
     },
   },
 };

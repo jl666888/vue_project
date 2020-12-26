@@ -30,7 +30,7 @@ export default {
       this.$router.push("/buy/buy1");
     },
     back() {
-      //   this.$router.push("/classroom");
+      this.$router.push("/classroom");
     },
   },
 };
