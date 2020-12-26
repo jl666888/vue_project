@@ -23,21 +23,7 @@
         placeholder="手机号"
         :rules="[{ required: true, message: '请填写手机号' }]"
       />
-      <van-field
-        v-model="age"
-        name="age"
-        label="年龄"
-        placeholder="年龄"
-        :rules="[{ required: true, message: '请填写年龄' }]"
-      />
-      <van-field name="radio" label="性别">
-        <template #input>
-          <van-radio-group v-model="radio" direction="horizontal">
-            <van-radio name="1">男</van-radio>
-            <van-radio name="2">女</van-radio>
-          </van-radio-group>
-        </template>
-      </van-field>
+      
       <div style="margin: 16px;">
         <van-button round block type="info"  native-type="submit">注册</van-button>
       </div>
@@ -60,22 +46,16 @@ export default {
       username: "",
       password: "",
       phone:'',
-      age:'',
-       radio: '1',
+      
     };
   },
   methods: {
     onSubmit(values) {
       
-      this.$http.get('/node/signIn',{
-        params:{
-          username:values.username,
-          password:values.password,
-          phone:values.phone,
-          age:values.age-0,
-          gender:values.radio-0,
-        }
-      }).then(ret=>{
+      this.$http.post('/api/info',`username=${values.username}&phone=${values.phone}&password=${values.password}`
+        
+        
+      ).then(ret=>{
         console.log(ret)
       })
       console.log(values)

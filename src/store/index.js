@@ -8,7 +8,8 @@ export default new Vuex.Store({
     grid:[],
     defaltArr:[],
     titleArr:[],
-    bool:true
+    bool:true,
+    token:''
   },
   mutations: {
     setGrid:function(state,val){
@@ -25,6 +26,10 @@ export default new Vuex.Store({
     },
     setShow:function(state,val){
       state.bool = val;
+    },
+    setToken:function(state,val){
+      state.token = val;
+      window.localStorage.setItem('token',val)
     }
   },
   actions: {

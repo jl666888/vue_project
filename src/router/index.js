@@ -16,8 +16,9 @@ const routes = [
   {
     path: '/',
     // component: Classroom
-    redirect:'/classroom'
+    redirect:'/login'
   },
+  {path:'/login2',component:()=>import('@/components/Login/Login')},
   Login,
   ...BuyRouter,
   ...CenterRouter,
@@ -31,6 +32,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to,from,next)=>{
+  let arr = [
+    '/login'
+  ]
+  arr.forEach((v,k)=>{
+    if(to.path == v){
+      if(window.localStorage.getItem('token')){
+        router.push('/classroom')
+      }
+    }
+  })
+  next()
 })
 
 export default router

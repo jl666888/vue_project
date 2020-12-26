@@ -19,6 +19,11 @@ let title = JSON.parse(window.localStorage.getItem('titleArr'))
 if(title){
   store.commit('setTitle',title)
 }
+
+let token = window.localStorage.getItem('token')
+if(token){
+  store.commit('setToken',token)
+}
 new Vue({
   router,
   store,

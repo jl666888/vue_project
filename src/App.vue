@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    {{text}}
     <router-view />
     <Footer v-if="$store.state.bool"></Footer>
   </div>
@@ -10,13 +11,18 @@ import Footer from "./components/Naviation/Footer";
 export default {
   data(){
     return {
-      
+      text:''
     }
   },
   components: {
     Footer,
     
   },
+  created(){
+    if(window.localStorage.getItem('token')){
+      this.text = 'ok'
+    }
+  }
 };
 
 </script>

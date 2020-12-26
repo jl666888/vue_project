@@ -8,8 +8,8 @@
         <!-- 按钮 -->
         <div class="button">
             <van-button round type="info" @click="register">注册</van-button>
-            <van-button round type="info" >登录</van-button>
-            <van-button round type="info">游客登录</van-button>
+            <van-button round type="info" @click="login">登录</van-button>
+            <van-button round type="info" @click='fun'>游客登录</van-button>
         </div>
         
     </div>
@@ -27,6 +27,12 @@ export default {
     methods:{
         register:function(){
             this.$router.push('/register')
+        },
+        login:function(){
+            this.$router.push('/login2')
+        },
+        fun:function(){
+            this.$router.push('/classroom')
         }
     }
 }
