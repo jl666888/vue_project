@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  created(){
-    this.$store.commit('setShow',false)
-  }
-}
+  created() {
+    this.$store.commit("setShow", false);
+  },
+};
 </script>

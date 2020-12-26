@@ -4,10 +4,25 @@ import Mobile from '@/views/details/mobile.vue'
 import NewUser from '@/views/details/newUser.vue'
 import Clas from '@/views/details/clas.vue'
 var DetailsRouter = [
-    {path:'/details/activity',component:Activity},
-    {path:'/details/learn',component:Learn},
-    {path:'/details/mobile',component:Mobile},
-    {path:'/details/newUser',component:NewUser},
-    {path:'/details/clas',component:Clas}
+    {
+        path: '/Details/activity',
+        component: Activity
+    },
+    {
+        path: '/Details/learn',
+        component: Learn
+    },
+    {
+        path: '/Details/mobile',
+        component: Mobile
+    },
+    {
+        path: '/Details/newUser',
+        component: NewUser
+    },
+    {
+        path: '/Details/clas',
+        component: Clas
+    },
 ]
 export default DetailsRouter

@@ -4,6 +4,7 @@
     <Footer v-show="$store.state.bool"></Footer>
   </div>
 </template>
+
 <script>
 import Vue from "vue";
 import Footer from "./components/Naviation/Footer";
