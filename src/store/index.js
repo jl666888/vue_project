@@ -9,7 +9,8 @@ export default new Vuex.Store({
     defaltArr:[],
     titleArr:[],
     bool:true,
-    token:''
+    token:'',
+    users:{}
   },
   mutations: {
     setGrid:function(state,val){
@@ -30,6 +31,10 @@ export default new Vuex.Store({
     setToken:function(state,val){
       state.token = val;
       window.localStorage.setItem('token',val)
+    },
+    setUsers:function(state,val){
+      state.users = val
+      window.localStorage.setItem('users',JSON.stringify(val))
     }
   },
   actions: {

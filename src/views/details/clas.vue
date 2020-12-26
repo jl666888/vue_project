@@ -28,7 +28,7 @@
       <van-tabs @click="onClick" v-model="active">
         <van-tab title="课程列表">
           <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <van-cell v-for="(item,key) in arr" :key="key" :title="item.name" @click="fun(item)" />
+            <van-cell v-for="(item,key) in arr" :key="key" :title="item.name" />
           </van-list>
         </van-tab>
         <van-tab title="课程设置">
@@ -57,7 +57,7 @@
           </van-tab>
       </van-tabs>
     </div>
-    <van-submit-bar :price="(price-0)*100" button-text="提交订单" />
+    <van-submit-bar :price="(price-0)*100" @submit="onSubmit" button-text="提交订单" />
   </div>
 </template>
 
@@ -113,7 +113,9 @@ export default {
     back: function() {
       this.$router.go(-1);
     },
-    onClick(name, title) {},
+    onClick(name, title) {
+     
+    },
     onLoad() {
       // 异步更新数据
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
@@ -122,8 +124,8 @@ export default {
         this.finished = true;
       }
     },
-    fun: function(item) {
-      console.log(item.id);
+    onSubmit(){
+      this.$router.push('/buy/buy1')
     }
   }
 };

@@ -24,6 +24,11 @@ let token = window.localStorage.getItem('token')
 if(token){
   store.commit('setToken',token)
 }
+
+let users = JSON.parse(window.localStorage.getItem('users'))
+if(users){
+  store.commit('setUsers',users)
+}
 new Vue({
   router,
   store,

@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    {{text}}
+    <div v-if="text">
+      已登入
+    </div>
+    <div v-else>
+      未登录
+    </div>
     <router-view />
     <Footer v-if="$store.state.bool"></Footer>
   </div>
@@ -16,13 +21,24 @@ export default {
   },
   components: {
     Footer,
-    
   },
   created(){
-    if(window.localStorage.getItem('token')){
-      this.text = 'ok'
+      this.text= window.localStorage.getItem('token')
+
+      //获取用户信息
+      this.$http.post('/api/getUser').then(ret=>{
+        console.log(ret)
+        this.$store.commit('setUsers',ret.data)
+      })
+  },
+  watch:{
+    $route:function(){
+      this.text= window.localStorage.getItem('token')
     }
+      
+    
   }
+  
 };
 
 </script>

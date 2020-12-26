@@ -36,10 +36,16 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
   let arr = [
-    '/login'
+    '/login',
+    '/buy/buy1'
   ]
   arr.forEach((v,k)=>{
-    if(to.path == v){
+    if(to.path == '/buy/buy1'){
+      if(!window.localStorage.getItem('token')){
+        router.push('/login')
+      }
+    }
+    if(to.path=='/login'){
       if(window.localStorage.getItem('token')){
         router.push('/classroom')
       }
