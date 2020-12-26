@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     
     <router-view />
     <Footer v-show="$store.state.bool"></Footer>
@@ -22,4 +22,7 @@ export default {
 };
 </script>
 <style lang="scss">
+[v-cloak]{
+  display:none
+}
 </style>

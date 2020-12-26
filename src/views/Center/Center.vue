@@ -102,6 +102,7 @@ export default {
     }
   },
   created() {
+    
     this.$http.post("/api/getUser").then(ret => {
       // console.log(ret);
       if (window.localStorage.getItem("token")) {
