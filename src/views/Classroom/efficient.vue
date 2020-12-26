@@ -68,7 +68,8 @@ export default {
 
   methods: {
     go: function() {
-      console.log("这是搜索按钮,请跳转搜索路由组件");
+      // console.log("这是搜索按钮,请跳转搜索路由组件");
+      this.$router.push('/classroom/search')
     },
     back: function() {
       this.$router.go(-1);
