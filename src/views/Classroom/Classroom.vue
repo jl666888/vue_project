@@ -39,7 +39,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2,val)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:14px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -51,7 +51,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2,val)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -63,7 +63,7 @@
                   <div>
                 
                 <!-- swiper图片位置 -->
-                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:125px;display:block" :src="val.pic" @click="swiperImg(key2,val)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -131,8 +131,9 @@ export default Vue.extend({
         this.$router.push("/classroom/search");
       }
     },
-    swiperImg:function(key){
+    swiperImg:function(key,val){
       this.$router.push({path:'/details/clas',query:{key:key}})
+      
     }
   }
 });
