@@ -137,7 +137,8 @@ export default Vue.extend({
           this.$router.push({ path: "/details/clas", query: { key: key,id:this.$store.state.titleArr[key].id } });
 
     }
-  }
+  },
+  
 });
 </script>
 
