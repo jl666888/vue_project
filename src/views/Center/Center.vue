@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="but">
-        <van-button type="info" size="large" class="button"
+        <van-button type="info" size="large" class="button" @click="unLogin"
           >退出登录</van-button
         >
       </div>
