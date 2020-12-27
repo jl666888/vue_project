@@ -52,7 +52,7 @@ export default {
               this.$store.commit("setToken", ret._token);
               Toast.success('登入成功');
                 setTimeout(()=>{
-                    this.$router.push('/center')
+                    this.$router.push('/')
                     this.$store.commit('setShow',true)
                 },1000)
             } else {

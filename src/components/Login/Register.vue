@@ -33,13 +33,14 @@
 
 <script>
 import Vue from "vue";
-import { Form, Field, Button,RadioGroup,Radio } from "vant";
+import { Form, Field, Button,RadioGroup,Radio,Toast } from "vant";
 
 Vue.use(Form);
 Vue.use(Field);
 Vue.use(Button);
 Vue.use(RadioGroup);
 Vue.use(Radio);
+Vue.use(Toast);
 export default {
   data() {
     return {
@@ -54,9 +55,17 @@ export default {
       
       this.$http.post('/api/info',`username=${values.username}&phone=${values.phone}&password=${values.password}`
       ).then(ret=>{
-        console.log(ret)
+        if(ret.error==0){
+            Toast.success(ret.msg + '正在前往登录界面,请稍后');
+             setTimeout(()=>{
+                    this.$router.push('/login2')
+
+                },1000)
+        }else{
+            Toast.fail(ret.msg);              
+        }
       })
-      console.log(values)
+      // console.log(values)
     }
   },
   created() {

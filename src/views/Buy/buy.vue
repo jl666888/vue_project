@@ -2,26 +2,28 @@
   <div>
     <div class="cnt">
       <div class="cnt_1">
-        <p>用户名称：<span>{{user_name || '无'}}</span></p>
-        <p>用户手机：<span>{{user_phone || '无'}}</span></p>
+        <p>
+          用户名称：<span>{{ user_name || "无" }}</span>
+        </p>
+        <p>
+          用户手机：<span>{{ user_phone || "无" }}</span>
+        </p>
       </div>
       <div class="cnt_2">
         <div>
-          <img :src="dataList.pic" width="130" height="80" />
+          <img :src="dataList.img" width="130" height="80" />
         </div>
         <div>
           <p>{{ dataList.name }}</p>
           <p style="color: red">
-            ￥{{ Math.floor(dataList.price / 100) }}/{{
-              dataList.comment_num
-            }}课时
+            ￥{{ dataList.price }}/{{ dataList.comment_num }}课时
           </p>
         </div>
       </div>
       <div class="cnt123" style="margin-top: 5px; color: gray-6">
         <van-nav-bar
           left-text="选择学员"
-          :right-text="'已选择' + this.$store.state.stuNumber + '人'"
+          :right-text="'已选择' + this.$store.state.Res.length + '人'"
           border
           @click-right="onClickRight"
         />
@@ -66,16 +68,15 @@
     </div>
     <div>
       <van-swipe-cell>
-        <van-cell title="价格" :value="'￥' + dataList.price / 100" />
-        <van-cell title="学员数量" :value="this.$store.state.stuNumber" />
+        <van-cell title="价格" :value="'￥' + dataList.price" />
+        <van-cell title="学员数量" :value="this.$store.state.Res.length" />
         <van-cell title="优惠券" :value="youVal / 100" />
 
         <van-cell
           title="实付"
           :value="
             '￥' +
-            ((dataList.price / 100) * this.$store.state.stuNumber -
-              youVal / 100)
+            (dataList.price * this.$store.state.Res.length - youVal / 100)
           "
         />
       </van-swipe-cell>
@@ -116,7 +117,7 @@ const coupon = {
   valueDesc: "200",
   unitDesc: "元",
 };
-// let Buy = JSON.parse(localStorage.getItem("Buy"));
+let List = JSON.parse(localStorage.getItem("BuyData"));
 export default {
   components: {
     Submit,
@@ -131,21 +132,22 @@ export default {
       disabledCoupons: [coupon],
       coupons1: ["选择学员"],
       youVal: 0,
-      // Buy,
-      user_name:'',
-      user_phone:'',
+      user_name: "",
+      user_phone: "",
     };
   },
   created() {
+    this.dataList = this.$store.state.buyData;
+    localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);
-    this.$http.get("http://127.0.0.1/BK_2003/getAirPortInfo.php").then((ret) => {
-      this.dataList = ret.data[0];
-      this.$store.commit("setBuyData", this.dataList);
-    });
-    if(JSON.parse(window.localStorage.users)){
-      let users = JSON.parse(window.localStorage.users)
+    if (JSON.parse(localStorage.getItem("users"))) {
+      let users = JSON.parse(window.localStorage.getItem("users"));
       this.user_name = users.username;
-      this.user_phone = users.phone
+      this.user_phone = users.phone;
+    }
+
+    if (!this.dataList) {
+      this.dataList = List;
     }
   },
   methods: {
@@ -154,13 +156,14 @@ export default {
     },
 
     onChange(index) {
-      if (this.$store.state.stuNumber) {
+      if (this.$store.state.Res.length) {
         this.youVal = this.coupons[index].value;
       }
       this.showList = false;
       this.chosenCoupon = index;
     },
     onClickRight() {
+      this.$store.commit("setSuc", this.dataList);
       this.$router.push("/buy/stu");
     },
     onClickRight1() {
