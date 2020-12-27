@@ -133,7 +133,9 @@ export default Vue.extend({
       }
     },
     swiperImg:function(key){
-      this.$router.push({path:'/details/clas',query:{key:key}})
+        // console.log()
+          this.$router.push({ path: "/details/clas", query: { key: key,id:this.$store.state.titleArr[key].id } });
+
     }
   }
 });
