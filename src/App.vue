@@ -8,7 +8,7 @@
 
 <script>
 import Vue from "vue";
-import Footer from "./components/Naviation/Footer";
+import Footer from "@/components/Naviation/Footer";
 export default {
   data() {
     return {};
@@ -16,10 +16,7 @@ export default {
   components: {
     Footer,
   },
-  created() {
-    //获取用户信息
-   
-  },
+  
 };
 </script>
 <style lang="scss">
