@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      if (!this.$store.state.stuNumber) {
+      if (!this.$store.state.Res.length) {
         Toast.fail("请选择学员");
         return;
       }

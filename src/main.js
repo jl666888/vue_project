@@ -21,7 +21,7 @@ let User = JSON.parse(localStorage.getItem('User')) || ''
 if(User){
   store.commit('setName1',User);
 }
-let Res = JSON.parse(localStorage.getItem('StuRes')) || ''
+let Res = JSON.parse(localStorage.getItem('StuRes')) || []
 if(Res){
   store.commit('setRes',Res);
 }
