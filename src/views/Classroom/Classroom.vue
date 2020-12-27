@@ -39,7 +39,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:14px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -51,7 +51,7 @@
                   <div>
                  
                 <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -63,7 +63,7 @@
                   <div>
                 
                 <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2)">
+                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
                     <div class="content" style="text-align:center">{{val.name}}
                         <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
                     </div>
@@ -101,9 +101,13 @@ export default Vue.extend({
       grid: ["高校晚辅导", "周末精品班", "一对一", "搜索"],
       one: "",
       location: "",
+      dataLists: [],
     };
   },
   created() {
+    this.$http.get("http://127.0.0.1/BK_2003/index.php").then((ret) => {
+      console.log(ret);
+    });
     this.$store.commit("setGrid", this.grid);
     this.$store.commit("setShow", true);
     this.location = window.localStorage.getItem("query");
@@ -130,8 +134,8 @@ export default Vue.extend({
         this.$router.push("/classroom/search");
       }
     },
-    swiperImg: function (key) {
-      this.$router.push({ path: "/details/clas", query: { key: key } });
+    swiperImg: function (key, id) {
+      this.$router.push({ path: "/details/clas", query: { key: key, id: id } });
     },
   },
 });

@@ -31,7 +31,6 @@
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
-            @load="onLoad"
           >
             <van-cell
               v-for="(item, key) in arr"
@@ -183,12 +182,18 @@ export default {
       teacher: [],
       id: "",
       teacherName: "",
+      cid: "",
     };
   },
   created() {
+    this.$http
+      .get("http://127.0.0.1/BK_2003/details.php", {
+        params: { cid: this.$route.query.id },
+      })
+      .then((ret) => {
+        this.arr = ret.data;
+      });
     this.$store.commit("setShow", false);
-    this.arr = this.$store.state.defaltArr;
-    // console.log(this.arr);
     this.img = this.$store.state.titleArr[this.$route.query.key].pic;
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
@@ -293,7 +298,15 @@ export default {
       }
     },
     onSubmit() {
-      this.$router.push("/buy/buy1");
+      this.$store.commit("setBuyData", {
+        name: this.name,
+        price: this.price,
+        img: this.img,
+      });
+      this.$router.push({
+        path: "/buy/buy1",
+        query: { id: this.$route.query.id },
+      });
     },
   },
 };

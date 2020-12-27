@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     onSubmit(values) {
-      //   console.log("submit", values);
       this.$store.commit("setName", values.username);
       this.$router.push("/buy/stu");
     },

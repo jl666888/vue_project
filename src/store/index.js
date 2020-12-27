@@ -10,13 +10,22 @@ export default new Vuex.Store({
     stuNumber:0,
     teach:teach1 ? teach1 : {name:'',city:''},
     buyData:{},
+    Name1:[],
     grid:[],
     defaltArr:[],
     titleArr:[],
     token:'',
-    users:{}
+    users:{},
+    Suc:'',
+    Res:'',
   },
   mutations: {
+    setRes(state,val){
+      state.Res = val;
+    },
+    setName1(state,val){
+      state.Name1 = val;
+    },
     setShow(state,val){
       state.bool = val;
     },
@@ -25,6 +34,9 @@ export default new Vuex.Store({
     },
     setStuNum(state,val){
       state.stuNumber = val;
+    },
+    setSuc(state,val){
+      state.Suc = val;
     },
     setTeach:function(state,val){
       state.teach = val;
