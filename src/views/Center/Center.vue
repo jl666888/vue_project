@@ -123,7 +123,6 @@ export default {
   },
   created() {
     this.$http.post("/api/getUser").then((ret) => {
-      // console.log(ret);
       if (window.localStorage.getItem("token")) {
         this.$store.commit("setUsers", ret.data);
         let users = JSON.parse(window.localStorage.getItem("users"));

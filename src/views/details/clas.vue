@@ -22,8 +22,16 @@
     <div class="main">
       <van-tabs @click="onClick" v-model="active">
         <van-tab title="课程列表">
-          <van-list v-model="loading" :finished="finished" finished-text="没有更多了">
-            <van-cell v-for="(item, key) in arr" :key="key" :title="item.name" />
+          <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+          >
+            <van-cell
+              v-for="(item, key) in arr"
+              :key="key"
+              :title="item.name"
+            />
           </van-list>
         </van-tab>
         <van-tab title="课程设置">
@@ -100,21 +108,19 @@ export default {
       numbers: "",
       teacher: [],
       id: "",
-      teacherName: ""
+      teacherName: "",
+      cid: "",
     };
   },
   created() {
     this.$http
-      .get("http://127.0.0.1/BK_2003/getDefalt.php?cid=" + this.$route.query.id)
-      .then(ret => {
-        // console.log(ret)
-
-        this.$store.commit("setDefalt", ret.data);
-        this.arr = this.$store.state.defaltArr;
+      .get("http://127.0.0.1/BK_2003/details.php", {
+        params: { cid: this.$route.query.id },
+      })
+      .then((ret) => {
+        this.arr = ret.data;
       });
-
     this.$store.commit("setShow", false);
-    // console.log(this.arr);
     this.img = this.$store.state.titleArr[this.$route.query.key].pic;
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
@@ -140,9 +146,17 @@ export default {
       }
     },
     onSubmit() {
-      this.$router.push("/buy/buy1");
-    }
-  }
+      this.$store.commit("setBuyData", {
+        name: this.name,
+        price: this.price,
+        img: this.img,
+      });
+      this.$router.push({
+        path: "/buy/buy1",
+        query: { id: this.$route.query.id },
+      });
+    },
+  },
 };
 </script>
 

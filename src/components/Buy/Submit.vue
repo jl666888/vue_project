@@ -27,6 +27,7 @@ import { SubmitBar, Popup, Toast } from "vant";
 Vue.use(SubmitBar);
 Vue.use(Popup);
 Vue.use(Toast);
+
 export default {
   data() {
     return {
@@ -37,7 +38,7 @@ export default {
   },
   created() {
     this.dataList = this.$store.state.buyData;
-    this.money = this.dataList.price * this.$store.state.stuNumber;
+    this.money = this.dataList.price * 100 * this.$store.state.Res.length;
     if (this.dataList.price == undefined) {
       this.money = 0;
     }

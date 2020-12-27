@@ -15,7 +15,7 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    // component: Classroom
+    component: ClassroomRouter,
     redirect:'/classroom'
   },
   {path:'/login2',component:()=>import('@/components/Login/Login')},
@@ -34,19 +34,24 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to,from,next)=>{
-  let arr = [
-    '/classroom',
-    '/buy/buy1'
-  ]
-  arr.forEach((v,k)=>{
-    if(to.path == v){
-      if(!window.localStorage.getItem('token')){
-        router.push('/login')
-      }
-    }
-  })
-  next()
-})
+// router.beforeEach((to,from,next)=>{
+//   let arr = [
+//     '/login',
+//     // '/buy/buy1'
+//   ]
+//   arr.forEach((v,k)=>{
+//     if(to.path == '/buy/buy1'){
+//       if(!window.localStorage.getItem('token')){
+//         router.push('/login')
+//       }
+//     }
+//     if(to.path=='/login'){
+//       if(window.localStorage.getItem('token')){
+//         router.push('/classroom')
+//       }
+//     }
+//   })
+//   next()
+// })
 
 export default router

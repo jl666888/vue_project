@@ -5,19 +5,28 @@ Vue.use(Vuex)
 const teach1 = localStorage.getItem('Buy');
 export default new Vuex.Store({
   state: {
-    bool: true,
-    username: '',
-    stuNumber: 0,
-    teach: teach1 ? teach1 : { name: '', city: '' },
-    buyData: {},
-    grid: [],
-    defaltArr: [],
-    titleArr: [],
-    token: '',
-    users: {}
+    bool:true,
+    username:'',
+    stuNumber:0,
+    teach:teach1 ? teach1 : {name:'',city:''},
+    buyData:{},
+    Name1:[],
+    grid:[],
+    defaltArr:[],
+    titleArr:[],
+    token:'',
+    users:{},
+    Suc:'',
+    Res:'',
   },
   mutations: {
-    setShow(state, val) {
+    setRes(state,val){
+      state.Res = val;
+    },
+    setName1(state,val){
+      state.Name1 = val;
+    },
+    setShow(state,val){
       state.bool = val;
     },
     setName(state, val) {
@@ -26,7 +35,10 @@ export default new Vuex.Store({
     setStuNum(state, val) {
       state.stuNumber = val;
     },
-    setTeach: function (state, val) {
+    setSuc(state,val){
+      state.Suc = val;
+    },
+    setTeach:function(state,val){
       state.teach = val;
     },
     setBuyData: function (state, val) {
