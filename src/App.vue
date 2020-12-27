@@ -7,7 +7,7 @@
 
 <script>
 import Vue from "vue";
-import Footer from "./components/Naviation/Footer";
+import Footer from "@/components/Naviation/Footer";
 export default {
   data() {
     return {};
@@ -20,7 +20,7 @@ export default {
   },
   watch: {
     $route() {
-      console.log(this.$store.state.Res.length);
+      // console.log(this.$store.state.Res.length);
     },
   },
 };

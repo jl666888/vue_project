@@ -1,84 +1,123 @@
 <template>
-  <div style="margin-bottom:50px;padding:0 7px;box-sizing:border-box">
+  <div style="margin-bottom: 50px; padding: 0 7px; box-sizing: border-box">
     <div>
-      <p style="text-align:center;margin-bottom:0;">课程</p>
+      <p style="text-align: center; margin-bottom: 0">课程</p>
 
       <!-- 定位 -->
-      <router-link class="location" :to="{path:'/classroom/village'}"><span class="iconfont icon-dingwei" style="fontSize:40px"></span><span style="margin-bottom:10px;display:inline-block">{{location||'选择校区'}}</span></router-link>
-      <van-swipe class="my-swipe" style="overflow:hidden" :autoplay="2000" indicator-color="white">
-        <van-swipe-item v-for="(val,key) in $store.state.titleArr" :key="key">
-           <img :src="val.pic" />
+      <router-link class="location" :to="{ path: '/classroom/village' }"
+        ><span class="iconfont icon-dingwei" style="fontsize: 40px"></span
+        ><span style="margin-bottom: 10px; display: inline-block">{{
+          location || "选择校区"
+        }}</span></router-link
+      >
+      <van-swipe
+        class="my-swipe"
+        style="overflow: hidden"
+        :autoplay="2000"
+        indicator-color="white"
+      >
+        <van-swipe-item v-for="(val, key) in $store.state.titleArr" :key="key">
+          <img :src="val.pic" />
         </van-swipe-item>
       </van-swipe>
       <!-- 格子 -->
-      <van-grid :gutter="10" style="margin-top:10px">
+      <van-grid :gutter="10" style="margin-top: 10px">
         <van-grid-item
-          v-for="(value,key) in grid"
+          v-for="(value, key) in grid"
           :key="value"
-
           @click="Grid(value)"
         >
-         <span  :class="'iconfont icon-img'+key" style="fontSize:40px;">
-          <p style="fontSize:14px">{{value}}</p>
-         </span>
+          <span :class="'iconfont icon-img' + key" style="fontsize: 40px">
+            <p style="fontsize: 14px">{{ value }}</p>
+          </span>
         </van-grid-item>
-       
       </van-grid>
 
       <!-- 报错不用管 , 加不了 key , 加了还报错  -->
-   
-      <div v-for="(val,key) in grid" v-if="key!==3" :key="key" >
-        <p >
-            <h3 style="display:inline;">{{val}}</h3>
-            <router-link style="float:right"  :to="{path:'/classroom/efficient',query:{id:key}}" tag="span"><span style="color:#f1f1f1;fontSize:16px">更多&gt;</span></router-link>
-          
-            <div class="swiper-container" style="margin-top:15px;">
-              <div class="swiper-wrapper">
+
+      <div v-for="(val, key) in grid" v-show="key !== 3" :key="key">
+        <div>
+          <h3 style="display: inline">{{ val }}</h3>
+          <router-link
+            style="float: right"
+            :to="{ path: '/classroom/efficient', query: { id: key } }"
+            tag="span"
+            ><span style="color: #f1f1f1; fontsize: 16px"
+              >更多&gt;</span
+            ></router-link
+          >
+
+          <div class="swiper-container" style="margin-top: 15px">
+            <div class="swiper-wrapper">
               <!-- ========//////////////============ -->
-                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"   v-if="key2<5 && key==0">
-                  <div>
-                 
-                <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
-                    <div class="content" style="text-align:center">{{val.name}}
-                        <p style="float:left;fontSize:14px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
-                    </div>
-
+              <div
+                class="swiper-slide"
+                v-for="(val, key2) in $store.state.titleArr"
+                v-show="key2 < 5 && key == 0"
+              >
+                <div>
+                  <!-- swiper图片位置 -->
+                  <img
+                    style="width: 124px; display: block"
+                    :src="val.pic"
+                    @click="swiperImg(key2, val.id)"
+                  />
+                  <div class="content" style="text-align: center">
+                    {{ val.name }}
+                    <p style="float: left; fontsize: 14px; margin: 0 10px 0">
+                      {{ val.pay_price }}/小时
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                 <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"  v-if="key2>5 && key2<11 && key==1">
-                  <div>
-                 
-                <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
-                    <div class="content" style="text-align:center">{{val.name}}
-                        <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
-                    </div>
-                    
+              <div
+                class="swiper-slide"
+                v-for="(val, key2) in $store.state.titleArr"
+                v-show="key2 > 5 && key2 < 11 && key == 1"
+              >
+                <div>
+                  <!-- swiper图片位置 -->
+                  <img
+                    style="width: 124px; display: block"
+                    :src="val.pic"
+                    @click="swiperImg(key2, val.id)"
+                  />
+                  <div class="content" style="text-align: center">
+                    {{ val.name }}
+                    <p style="float: left; fontsize: 16px; margin: 0 10px 0">
+                      {{ val.pay_price }}/小时
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"  v-if="key2>11 && key2<16 && key==2">
-                  <div>
-                
-                <!-- swiper图片位置 -->
-                    <img style="width:124px;display:block" :src="val.pic" @click="swiperImg(key2,val.id)">
-                    <div class="content" style="text-align:center">{{val.name}}
-                        <p style="float:left;fontSize:16px;margin:0 10px 0;">{{val.pay_price}}/小时</p>
-                    </div>
-                    
+              <div
+                class="swiper-slide"
+                v-for="(val, key2) in $store.state.titleArr"
+                v-show="key2 > 11 && key2 < 16 && key == 2"
+              >
+                <div>
+                  <!-- swiper图片位置 -->
+                  <img
+                    style="width: 124px; display: block"
+                    :src="val.pic"
+                    @click="swiperImg(key2, val.id)"
+                  />
+                  <div class="content" style="text-align: center">
+                    {{ val.name }}
+                    <p style="float: left; fontsize: 16px; margin: 0 10px 0">
+                      {{ val.pay_price }}/小时
+                    </p>
                   </div>
                 </div>
-
-
               </div>
             </div>
-            
-        </p>  
+          </div>
+        </div>
       </div>
-    
-<!-- ================================================HDK====================================================== -->
+
+      <!-- ================================================HDK====================================================== -->
     </div>
   </div>
 </template>
