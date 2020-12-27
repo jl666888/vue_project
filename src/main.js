@@ -29,6 +29,8 @@ let user =  window.localStorage.getItem('users') == undefined ? '' : JSON.parse(
 if(user){
   store.commit('setUsers',user)
 }
+
+
 new Vue({
   router,
   store,
