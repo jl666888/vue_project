@@ -11,7 +11,7 @@
         </van-swipe-item>
       </van-swipe>
       <!-- 格子 -->
-      <van-grid :gutter="10" style="margin-top:10px">
+      <van-grid :gutter="10"  style="margin-top:10px">
         <van-grid-item
           v-for="(value,key) in grid"
           :key="value"
@@ -26,16 +26,16 @@
       </van-grid>
 
       <!-- 报错不用管 , 加不了 key , 加了还报错  -->
-   
-      <div v-for="(val,key) in grid" v-if="key!==3" :key="key" >
-        <p >
+    
+      <div v-for="(val,key) in grid" v-show="key!==3" :key="key">
+        <div >
             <h3 style="display:inline;">{{val}}</h3>
             <router-link style="float:right"  :to="{path:'/classroom/efficient',query:{id:key}}" tag="span"><span style="color:#f1f1f1;fontSize:16px">更多&gt;</span></router-link>
           
             <div class="swiper-container" style="margin-top:15px;">
               <div class="swiper-wrapper">
               <!-- ========//////////////============ -->
-                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"   v-if="key2<5 && key==0">
+                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"    v-show="key2<5 && key==0">
                   <div>
                  
                 <!-- swiper图片位置 -->
@@ -47,7 +47,7 @@
                   </div>
                 </div>
 
-                 <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"  v-if="key2>5 && key2<11 && key==1">
+                 <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr" v-show="key2>5 && key2<11 && key==1">
                   <div>
                  
                 <!-- swiper图片位置 -->
@@ -59,7 +59,7 @@
                   </div>
                 </div>
 
-                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"  v-if="key2>11 && key2<16 && key==2">
+                <div class="swiper-slide" v-for="(val,key2) in $store.state.titleArr"  v-show="key2>11 && key2<16 && key==2">
                   <div>
                 
                 <!-- swiper图片位置 -->
@@ -75,7 +75,7 @@
               </div>
             </div>
             
-        </p>  
+        </div>  
       </div>
     
 <!-- ================================================HDK====================================================== -->
@@ -100,13 +100,15 @@ export default Vue.extend({
     return {
       grid: ["高校晚辅导", "周末精品班", "一对一", "搜索"],
       one: "",
-      location:''
+      location:'',
+      arr:[]
     };
   },
   created(){
       this.$store.commit('setGrid',this.grid)
       this.$store.commit('setShow',true)
-      this.location = this.$route.query.location;
+      this.location = window.localStorage.getItem('query');
+      
   },
   mounted(){
  new Swiper('.swiper-container', {
@@ -131,7 +133,9 @@ export default Vue.extend({
       }
     },
     swiperImg:function(key){
-      this.$router.push({path:'/details/clas',query:{key:key}})
+        // console.log()
+          this.$router.push({ path: "/details/clas", query: { key: key,id:this.$store.state.titleArr[key].id } });
+
     }
   }
 });

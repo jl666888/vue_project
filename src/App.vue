@@ -1,41 +1,30 @@
 <template>
+<<<<<<< HEAD
   <div id="app">
+=======
+  <div id="app" v-cloak>
+>>>>>>> 9157a3e6781f7b8bf6a5c7182876a773264fd1e7
     
     <router-view />
-    <Footer v-if="$store.state.bool"></Footer>
+    <Footer v-show="$store.state.bool"></Footer>
   </div>
 </template>
+
 <script>
 import Vue from "vue";
-import Footer from "./components/Naviation/Footer";
+import Footer from "@/components/Naviation/Footer";
 export default {
-  data(){
-    return {
-      text:''
-    }
+  data() {
+    return {};
   },
   components: {
     Footer,
   },
-  created(){
-      this.text= window.localStorage.getItem('token')
-
-      //获取用户信息
-      this.$http.post('/api/getUser').then(ret=>{
-        console.log(ret)
-        this.$store.commit('setUsers',ret.data)
-      })
-  },
-  watch:{
-    $route:function(){
-      this.text= window.localStorage.getItem('token')
-    }
-      
-    
-  }
   
 };
-
 </script>
 <style lang="scss">
+[v-cloak]{
+  display:none
+}
 </style>

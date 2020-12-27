@@ -55,9 +55,10 @@ export default {
     this.$store.commit("setShow", false);
     let id = this.$route.query.id;
     this.id = id;
-    this.$http.get("http://127.0.0.1/BK_2003/getList.php").then(ret => {
+    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getList").then(ret => {
       this.arr = ret.data;
       this.msg = this.$store.state.grid[this.id];
+      
       this.$store.commit("setTitle", this.arr);
       //   console.log(ret);
       if (this.arr.length > 0) {
@@ -68,19 +69,18 @@ export default {
 
   methods: {
     go: function() {
-      console.log("这是搜索按钮,请跳转搜索路由组件");
+      // console.log("这是搜索按钮,请跳转搜索路由组件");
+      this.$router.push('/classroom/search')
+      
     },
     back: function() {
       this.$router.go(-1);
     },
     defalt: function(val, key) {
-      this.$router.push({ path: "/details/clas", query: { key: key } });
-      this.$http
-        .get("http://127.0.0.1/BK_2003/getDefalt.php?cid=" + val.id)
-        .then(ret => {
-          // console.log(ret)
-          this.$store.commit("setDefalt", ret.data);
-        });
+      // console.log(val.id)
+      
+      
+          this.$router.push({ path: "/details/clas", query: { key: key,id:val.id } });
     }
   }
 };
