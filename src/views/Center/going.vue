@@ -53,7 +53,7 @@ export default {
   created() {
     this.$store.commit("setShow", false);
 
-    this.$http.get(`http://127.0.0.1/vue/getCourse.php`).then((res) => {
+    this.$http.get(`http://127.0.0.1/BK_2003/getList.php`).then((res) => {
       if (res.status == 200) {
         this.list = res.data.data[0];
       }

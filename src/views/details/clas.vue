@@ -193,6 +193,7 @@ export default {
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
     this.numbers = this.$store.state.titleArr[this.$route.query.key].numbers;
+<<<<<<< HEAD
     this.$http
       .get(
         "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
@@ -201,12 +202,19 @@ export default {
         this.teacher = ret;
         this.teacherName = this.teacher[this.id].realname;
       });
+=======
+    this.$http.get("http://127.0.0.1/BK_2003/getTeacher.php").then((ret) => {
+      this.teacher = ret;
+      this.teacherName = this.teacher[this.id].realname;
+    });
+>>>>>>> 03174540d9cff54430f59c94de336e10e2264dc7
     this.id = this.$route.query.key;
   },
   methods: {
     back: function () {
       this.$router.go(-1);
     },
+<<<<<<< HEAD
     onClick(name, title) {
       // 导入地址
       // import uri from "@/config/uri";
@@ -285,6 +293,10 @@ export default {
       //         });
       //     },
       //     onLoad() {
+=======
+    onClick(name, title) {},
+    onLoad() {
+>>>>>>> 03174540d9cff54430f59c94de336e10e2264dc7
       // 异步更新数据
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       if (this.arr.length > 0) {
