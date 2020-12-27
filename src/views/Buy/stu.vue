@@ -33,6 +33,7 @@ export default {
     };
   },
   created() {
+    
     this.result = this.$store.state.Res;
 
     if (this.$store.state.Name1) {

@@ -141,7 +141,7 @@ export default {
     localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);
     if (JSON.parse(localStorage.getItem("users"))) {
-      let users = JSON.parse(window.localStorage("users"));
+      let users = JSON.parse(window.localStorage.getItem("users"));
       this.user_name = users.username;
       this.user_phone = users.phone;
     }

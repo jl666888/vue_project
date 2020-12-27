@@ -5,7 +5,7 @@
 
       <!-- 定位 -->
       <router-link class="location" :to="{ path: '/classroom/village' }"
-        ><span class="iconfont icon-dingwei" style="fontsize: 40px"></span
+        ><span class="iconfont icon-dingwei" style="fontSize: 40px"></span
         ><span style="margin-bottom: 10px; display: inline-block">{{
           location || "选择校区"
         }}</span></router-link
@@ -144,9 +144,7 @@ export default Vue.extend({
     };
   },
   created() {
-    this.$http.get("http://127.0.0.1/BK_2003/index.php").then((ret) => {
-      console.log(ret);
-    });
+    
     this.$store.commit("setGrid", this.grid);
     this.$store.commit("setShow", true);
     this.location = window.localStorage.getItem("query");
@@ -173,7 +171,6 @@ export default Vue.extend({
         this.$router.push("/classroom/search");
       }
     },
-<<<<<<< HEAD
     swiperImg:function(key){
         // console.log()
           this.$router.push({ path: "/details/clas", query: { key: key,id:this.$store.state.titleArr[key].id } });
@@ -181,12 +178,6 @@ export default Vue.extend({
     }
   },
   
-=======
-    swiperImg: function (key, id) {
-      this.$router.push({ path: "/details/clas", query: { key: key, id: id } });
-    },
-  },
->>>>>>> 80190d1f31d9d4aa39c97d3e6ab62eb81ae877ba
 });
 </script>
 
@@ -217,6 +208,7 @@ export default Vue.extend({
 }
 .iconfont {
   text-align: center;
+  font-size:14px
 }
 .van-grid-item__content {
   padding: 0 !important;
