@@ -60,12 +60,15 @@
             class="iconfont icon-guanyuwomen"
             slot="icon"
             size="1.9rem"
-          />学员管理
+          />
+          关于我们
         </div>
       </div>
-      <van-button type="info" size="large" class="button" @click="unLogin"
-        >退出登录</van-button
-      >
+      <div class="but">
+        <van-button type="info" size="large" class="button"
+          >退出登录</van-button
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -222,9 +225,11 @@ export default {
     }
   }
 }
+.but {
+  text-align: center;
+}
 .button {
-  width: 380px;
+  width: 350px;
   margin-top: 10px;
-  margin-left: 18px;
 }
 </style>

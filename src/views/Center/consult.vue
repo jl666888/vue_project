@@ -6,11 +6,14 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <img
-      src="http://img.mukewang.com/szimg/5fdb394608def73a00000000-358-201.jpg"
-      alt=""
-      class="pic"
-    />
+    <div class="imgPic">
+      <img
+        src="http://img.mukewang.com/szimg/5fdb394608def73a00000000-358-201.jpg"
+        alt=""
+        class="pic"
+      />
+    </div>
+
     <div class="contactUs">
       <div class="contactUs1">联系我们</div>
       <p>北京校区：0591-8332467</p>
@@ -34,7 +37,7 @@
       <p>福清市中联天御财富广场4楼</p>
     </div>
 
-     <div class="contactUs">
+    <div class="contactUs">
       <div class="contactUs1">联系邮箱</div>
       <p>891362392@qq.com</p>
     </div>
@@ -61,22 +64,24 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .pic {
-  margin-left: 28px;
   margin-top: 15px;
   box-shadow: 0px 0px 10px #c2c2c2;
 }
-.contactUs{
+.contactUs {
   text-align: center;
   font-size: 16px;
 }
-.contactUs1{
+.contactUs1 {
   font-size: 18px;
-  color: #3279FD;
+  color: #3279fd;
   font-weight: bold;
   padding-top: 40px;
   padding-bottom: 35px;
 }
-p{
+p {
   margin: 0;
+}
+.imgPic{
+  text-align: center;
 }
 </style>

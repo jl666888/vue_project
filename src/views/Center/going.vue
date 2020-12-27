@@ -60,6 +60,13 @@ export default {
     //   }
     // console.log(this.list.data);
     // });
+
+    this.$http.get(`http://127.0.0.1/BK_2003/getList.php`).then((res) => {
+      if (res.status == 1) {
+        this.list = res.data[0];
+      }
+      // console.log(this.list.data);
+    });
   },
   beforeDestroy() {
     this.$store.commit("setShow", true);

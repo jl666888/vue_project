@@ -9,11 +9,24 @@
     <div class="coupon">优惠券管理</div>
     <div class="couponList">
       <div class="couponMain">优惠券立减1000元</div>
-      <div class="couponTime">即将失效</div>
+
+      <div class="couponTime">
+        <p>2020-12-31</p>
+        即将失效
+      </div>
     </div>
     <div class="couponList">
-       <div class="couponMain">优惠券立减1000元</div>
-      <div class="couponTime">即将失效</div>
+      <div class="couponMain">优惠券立减1000元</div>
+      <div class="couponTime">
+        <p>2020-12-31</p>
+        即将失效
+      </div>
+    </div>
+    <div class="couponList1">
+      <div class="couponMain">优惠券立减1000元</div>
+      <div class="couponTime">
+        已失效
+      </div>
     </div>
   </div>
 </template>
@@ -44,28 +57,64 @@ export default {
   margin-top: 20px;
 }
 .couponList {
-  width: 380px;
+  width: 350px;
   height: 150px;
   background: #7489a0;
+  margin: 0 auto;
   margin-top: 20px;
-  margin-left: 15px;
   border-radius: 15px;
   .couponMain {
     float: left;
-    width: 240px;
+    width: 210px;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 22px;
     line-height: 150px;
     border-right: 1px dashed #f5f3e9;
     color: #f5f3e9;
-    padding-left: 15px;
-  }
-  .couponTime{
-    float: left;
-    width: 120px;
     text-align: center;
+  }
+  .couponTime {
+    float: left;
+    width: 136px;
+    // background: #883;
     color: #f5f3e9;
-    margin-top: 75px;
+    margin-top: 60px;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.couponList1{
+  width: 350px;
+  height: 150px;
+  background:#E8E8EC;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 15px;
+  
+  .couponMain {
+    float: left;
+    width: 210px;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 150px;
+    border-right: 1px dashed #656565;;
+    color: #656565;
+    text-align: center;
+  }
+  .couponTime {
+    font-weight: bold;
+    float: left;
+    width: 136px;
+    // background: #883;
+    color: #656565;
+    margin-top: 60px;
+    text-align: center;
+    p {
+      margin: 0;
+    }
   }
 }
 </style>

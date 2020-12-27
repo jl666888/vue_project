@@ -8,12 +8,11 @@
     />
     <div class="pir">
       <img
-        data-v-1e317028=""
         src="http://img.mukewang.com/szimg/5fdb394608def73a00000000-358-201.jpg"
         alt=""
       />
     </div>
-    <div>
+    <div class="yemian">
       <h3>关于我们</h3>
       <p>致力于打造全国最专业的教育机构</p>
       <p>
@@ -46,11 +45,15 @@ export default {
 <style lang="scss" scoped>
 .yemian {
   text-align: center;
-  padding: 0 20px;
+  padding: 0 46px;
+}
+.yemian p:nth-child(3) {
+  text-indent: 2em;
 }
 .pir {
   height: 250px;
   width: 380px;
   margin: 0;
+  text-align: center;
 }
 </style>
