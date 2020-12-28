@@ -23,7 +23,7 @@
       <div class="cnt123" style="margin-top: 5px; color: gray-6">
         <van-nav-bar
           left-text="选择学员"
-          :right-text="'已选择' + this.$store.state.Res.length + '人'"
+          :right-text="'已选择' + length + '人'"
           border
           @click-right="onClickRight"
         />
@@ -69,7 +69,7 @@
     <div>
       <van-swipe-cell>
         <van-cell title="价格" :value="'￥' + dataList.price" />
-        <van-cell title="学员数量" :value="this.$store.state.Res.length" />
+        <van-cell title="学员数量" :value="length" />
         <van-cell title="优惠券" :value="youVal / 100" />
 
         <van-cell
@@ -134,9 +134,13 @@ export default {
       youVal: 0,
       user_name: "",
       user_phone: "",
+      length: 0,
     };
   },
   created() {
+    this.length = JSON.parse(localStorage.getItem("StuRes"))
+      ? JSON.parse(localStorage.getItem("StuRes")).length
+      : 0;
     this.dataList = this.$store.state.buyData;
     localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);

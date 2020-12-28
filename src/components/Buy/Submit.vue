@@ -34,11 +34,15 @@ export default {
       dataList: { price: 0 },
       show: false,
       money: 0,
+      length: 0,
     };
   },
   created() {
+    this.length = JSON.parse(localStorage.getItem("StuRes"))
+      ? JSON.parse(localStorage.getItem("StuRes")).length
+      : 0;
     this.dataList = this.$store.state.buyData;
-    this.money = this.dataList.price * 100 * this.$store.state.Res.length;
+    this.money = this.dataList.price * 100 * this.length;
     if (this.dataList.price == undefined) {
       this.money = 0;
     }
@@ -56,9 +60,21 @@ export default {
       this.show = true;
     },
     dian1() {
+      let suc = JSON.parse(localStorage.getItem("BuyData"));
+      this.$store.commit("setSuccess", {
+        name: suc.name,
+        img: suc.img,
+        pirce: suc.price,
+      });
       this.$router.push("/buy/suc");
     },
     dian2() {
+      let suc = JSON.parse(localStorage.getItem("BuyData"));
+      this.$store.commit("setDefeat", {
+        name: suc.name,
+        img: suc.img,
+        pirce: suc.price,
+      });
       this.$router.push("/buy/defeated");
     },
   },

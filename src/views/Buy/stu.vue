@@ -33,13 +33,14 @@ export default {
     };
   },
   created() {
-    this.result = this.$store.state.Res;
+    this.result = JSON.parse(localStorage.getItem("StuRes")) || [];
 
     if (this.$store.state.Name1) {
       this.stu = this.$store.state.Name1;
     }
     if (this.$store.state.username) {
       this.stu.push(this.$store.state.username);
+      this.$store.commit("setName", "");
     }
     localStorage.setItem("User", JSON.stringify(this.stu));
     this.$store.commit("setShow", false);
