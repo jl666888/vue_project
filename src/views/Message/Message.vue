@@ -2,18 +2,31 @@
   <div>
     <div class="xiaoxitongzhi">全部消息通知</div>
     <ul>
-      <li>
+      <li v-for="(item, index) in list" :key="'m' + index">
         <div class="kechengxiaoxi">课程消息</div>
-        亲爱的
-      </li>
-      <li>
-        <div class="kechengxiaoxi">课程消息</div>
-        亲爱的
+        亲爱的{{ user }}，您已购买{{ item.name }}课程，请记得上课
       </li>
     </ul>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      user: "",
+      list: [],
+    };
+  },
+  created() {
+    this.user = localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users")).username
+      : "XX";
+    this.list = localStorage.getItem("Success")
+      ? JSON.parse(localStorage.getItem("Success"))
+      : [];
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .xiaoxitongzhi {

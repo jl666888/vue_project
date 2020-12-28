@@ -18,8 +18,16 @@ export default new Vuex.Store({
     users:{},
     Suc:'',
     Res:'',
+    BuySuccess:'',
+    Buydefeat:'',
   },
   mutations: {
+    setSuccess(state,val){
+      state.BuySuccess = val;
+    },
+    setDefeat(state,val){
+      state.Buydefeat = val;
+    },
     setRes(state,val){
       state.Res = val;
     },
