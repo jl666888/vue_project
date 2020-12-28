@@ -61,7 +61,7 @@ export default {
     // console.log(this.list.data);
     // });
 
-    this.$http.get(`http://127.0.0.1/BK_2003/getList.php`).then((res) => {
+    this.$http.get(`https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getList`).then((res) => {
       if (res.status == 1) {
         this.list = res.data[0];
       }
