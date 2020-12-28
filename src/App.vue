@@ -15,14 +15,6 @@ export default {
   components: {
     Footer,
   },
-  created() {
-    //获取用户信息
-  },
-  watch: {
-    $route() {
-      // console.log(this.$store.state.Res.length);
-    },
-  },
 };
 </script>
 <style lang="scss">
