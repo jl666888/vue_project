@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <van-form @submit="onSubmit">
       <van-field
         v-model="phone"

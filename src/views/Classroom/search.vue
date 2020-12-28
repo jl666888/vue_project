@@ -83,6 +83,7 @@ export default {
         }
       }).then(ret=>{
         this.search = ret.data
+        
       })
     },
     Clear:function(){
