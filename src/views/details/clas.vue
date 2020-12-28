@@ -6,7 +6,12 @@
     <div class="to">
       <!-- &lt;
       <span style="margin-left:10px">详情页</span>-->
-      <van-nav-bar title="正常课程详情" left-text="返回" left-arrow @click-left="back" />
+      <van-nav-bar
+        title="正常课程详情"
+        left-text="返回"
+        left-arrow
+        @click-left="back"
+      />
     </div>
 
     <div style="width: 79vw" class="img">
@@ -35,7 +40,11 @@
           </van-list>
         </van-tab>
         <van-tab title="课程设置">
-          <van-grid direction="horizontal" style="margin-top: 30px" :column-num="3">
+          <van-grid
+            direction="horizontal"
+            style="margin-top: 30px"
+            :column-num="3"
+          >
             <van-grid-item text="课程教室" />
             <van-grid-item text="上课时间" />
             <van-grid-item text="课程" />
@@ -48,8 +57,10 @@
             :column-num="3"
           >
             <van-grid-item text="H5-2003" />
-            <van-grid-item text="2019-4-11
-14:00" />
+            <van-grid-item
+              text="2019-4-11
+14:00"
+            />
             <van-grid-item :text="val.name" />
           </van-grid>
         </van-tab>
@@ -57,13 +68,17 @@
           {{ teacherName }}
           <p style="margin-bottom: 100px">
             {{
-            teacherName.substr(0, 1)
+              teacherName.substr(0, 1)
             }}老师是一位多才多艺、幽默风趣的校区校长，是耐寒教育颜值担当之一。一路走过来，靠自己的努力和拼劲，把滨江校区从一个简单的套房校区慢慢打造成耐寒教育福清总部，并在校区管理中积极倡导轻松学习，快乐学习，高效学习。
           </p>
         </van-tab>
       </van-tabs>
     </div>
-    <van-submit-bar :price="(price - 0) * 100" @submit="onSubmit" button-text="提交订单" />
+    <van-submit-bar
+      :price="(price - 0) * 100"
+      @submit="onSubmit"
+      button-text="提交订单"
+    />
   </div>
 </template>
 
@@ -79,7 +94,7 @@ import {
   List,
   Cell,
   NavBar,
-  SubmitBar
+  SubmitBar,
 } from "vant";
 
 Vue.use(Loading);
@@ -93,7 +108,7 @@ Vue.use(List);
 Vue.use(NavBar);
 Vue.use(SubmitBar);
 export default {
-  data: function() {
+  data: function () {
     return {
       arr: [],
 
@@ -129,14 +144,14 @@ export default {
       .get(
         "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
       )
-      .then(ret => {
+      .then((ret) => {
         this.teacher = ret;
         this.teacherName = this.teacher[this.id].realname;
       });
     this.id = this.$route.query.key;
   },
   methods: {
-    back: function() {
+    back: function () {
       this.$router.go(-1);
     },
     onClick(name, title) {},
@@ -151,7 +166,7 @@ export default {
         query: { id: this.$route.query.id },
       });
     },
-  }
+  },
 };
 </script>
 

@@ -34,18 +34,22 @@ export default {
       dataList: { price: 0 },
       show: false,
       money: 0,
+      length: 0,
     };
   },
   created() {
+    this.length = JSON.parse(localStorage.getItem("StuRes"))
+      ? JSON.parse(localStorage.getItem("StuRes")).length
+      : 0;
     this.dataList = this.$store.state.buyData;
-    this.money = this.dataList.price * 100 * this.$store.state.Res.length;
+    this.money = this.dataList.price * 100 * this.length;
     if (this.dataList.price == undefined) {
       this.money = 0;
     }
   },
   methods: {
     onSubmit: function () {
-      if (!this.$store.state.stuNumber) {
+      if (!this.$store.state.Res.length) {
         Toast.fail("请选择学员");
         return;
       }
@@ -56,9 +60,31 @@ export default {
       this.show = true;
     },
     dian1() {
+      let suc = JSON.parse(localStorage.getItem("BuyData"));
+      this.$store.commit("setSuccess", {
+        name: suc.name,
+        img: suc.img,
+        pirce: suc.price,
+      });
+      let arr = JSON.parse(localStorage.getItem("Success"))
+        ? JSON.parse(localStorage.getItem("Success"))
+        : [];
+      arr.push(this.$store.state.BuySuccess);
+      localStorage.setItem("Success", JSON.stringify(arr));
       this.$router.push("/buy/suc");
     },
     dian2() {
+      let suc = JSON.parse(localStorage.getItem("BuyData"));
+      this.$store.commit("setDefeat", {
+        name: suc.name,
+        img: suc.img,
+        pirce: suc.price,
+      });
+      let arr = JSON.parse(localStorage.getItem("Defeat"))
+        ? JSON.parse(localStorage.getItem("Defeat"))
+        : [];
+      arr.push(this.$store.state.Buydefeat);
+      localStorage.setItem("Defeat", JSON.stringify(arr));
       this.$router.push("/buy/defeated");
     },
   },
