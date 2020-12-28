@@ -6,7 +6,8 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <div class="pir">
+    <div class='left'>
+      <div class="pir">
       <img
         src="http://img.mukewang.com/szimg/5fdb394608def73a00000000-358-201.jpg"
         alt=""
@@ -20,6 +21,8 @@
         耐寒教育的愿景是在个性化教育理念的指导下，通过持续的创新和整合，让每个需要成长机会的人都能获得更优质的教育资源和服务。使教育从艺术走向科学，整合社会更高品质、更具效率、更先进的教育资源，配置个性化的学习帮助计划和更适合学员的教学方案，最大程度地释放每个学员的潜能，让每个需要成长机会的人都能获得更优质的教育。
       </p>
     </div>
+    </div>
+    
   </div>
 </template>
 
@@ -45,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 .yemian {
   text-align: center;
-  padding: 0 46px;
+
 }
 .yemian p:nth-child(3) {
   text-indent: 2em;
@@ -55,5 +58,8 @@ export default {
   width: 380px;
   margin: 0;
   text-align: center;
+}
+.left{
+  padding:15px 10px
 }
 </style>

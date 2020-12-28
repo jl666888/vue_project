@@ -9,8 +9,7 @@
           :title="item.name"
           :key="index"
           v-model="cityName"
-        >
-        </van-tab>
+        ></van-tab>
       </van-tabs>
     </div>
     <div class="img1">
@@ -21,18 +20,12 @@
         v-for="(item, index) in teacher"
         :key="index"
       >
-        <van-image
-          width="135"
-          height="135"
-          src="//img.yzcdn.cn/vant/cat.jp"
-        ></van-image>
+        <van-image width="135" height="135" src="//img.yzcdn.cn/vant/cat.jp"></van-image>
         {{ item.realname }}
       </div>
     </div>
     <div class="footer">
-      <van-button type="primary" @click="submit1" size="large"
-        >大号按钮</van-button
-      >
+      <van-button type="primary" @click="submit1" size="large">大号按钮</van-button>
     </div>
   </div>
 </template>
@@ -52,42 +45,56 @@ export default {
       isActive: false,
       cityName: "",
       teachId: 0,
-      teacherName: "",
+      teacherName: ""
     };
   },
   created() {
     this.$store.commit("setShow", false);
-    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher").then((ret) => {
-      for (var i = 1; i < 7; i++) {
-        this.teacher.push(ret[i]);
-      }
-    });
-    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool").then((ret) => {
-      for (var i = 1; i < 11; i++) {
-        this.city.push(ret[i]);
-      }
-    });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
+      )
+      .then(ret => {
+        for (var i = 1; i < 7; i++) {
+          this.teacher.push(ret[i]);
+        }
+      });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool"
+      )
+      .then(ret => {
+        for (var i = 1; i < 11; i++) {
+          this.city.push(ret[i]);
+        }
+      });
   },
   methods: {
-    City11: function (name) {
+    City11: function(name) {
       this.cityName = name;
     },
-    Teach: function (id) {
+    Teach: function(id) {
       this.teachId = id;
       this.teacherName = this.teacher[id].realname;
     },
-    submit1: function () {
+    submit1: function() {
       this.$store.commit("setTeach", {
         name: this.teacherName || this.teacher[0].realname,
-        city: this.cityName || this.city[0].name,
+        city: this.cityName || this.city[0].name
       });
       // localStorage.setItem(
       //   "Buy",
       //   JSON.stringify({ teach1: this.$store.state.teach })
       // );
-      this.$router.push("/buy/buy1");
-    },
-  },
+      if (this.$route.query.zx) {
+        this.$router.push({ path: "/buy/buy1", query: { zx: 1 } });
+      } else if(this.$route.query.xf) {
+        this.$router.push({ path: "/buy/buy1" ,query:{xf:1}});
+      }else{
+        this.$router.push({path:'/buy/buy1'})
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@
 
       <!-- 定位 -->
       <router-link class="location" :to="{ path: '/classroom/village' }"
-        ><span class="iconfont icon-dingwei" style="fontsize: 40px"></span
+        ><span class="iconfont icon-dingwei" style="fontSize: 40px"></span
         ><span style="margin-bottom: 10px; display: inline-block">{{
           location || "选择校区"
         }}</span></router-link
@@ -27,7 +27,7 @@
           :key="value"
           @click="Grid(value)"
         >
-          <span :class="'iconfont icon-img' + key" style="fontsize: 40px">
+          <span :class="'iconfont icon-img' + key" style="fontSize: 14px">
             <p style="fontsize: 14px">{{ value }}</p>
           </span>
         </van-grid-item>
