@@ -66,6 +66,11 @@ export default {
         img: suc.img,
         pirce: suc.price,
       });
+      let arr = JSON.parse(localStorage.getItem("Success"))
+        ? JSON.parse(localStorage.getItem("Success"))
+        : [];
+      arr.push(this.$store.state.BuySuccess);
+      localStorage.setItem("Success", JSON.stringify(arr));
       this.$router.push("/buy/suc");
     },
     dian2() {
@@ -75,6 +80,11 @@ export default {
         img: suc.img,
         pirce: suc.price,
       });
+      let arr = JSON.parse(localStorage.getItem("Defeat"))
+        ? JSON.parse(localStorage.getItem("Defeat"))
+        : [];
+      arr.push(this.$store.state.BuySuccess);
+      localStorage.setItem("Defeat", JSON.stringify(arr));
       this.$router.push("/buy/defeated");
     },
   },

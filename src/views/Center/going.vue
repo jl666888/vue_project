@@ -53,6 +53,7 @@ export default {
       this.dataLists1.push(this.$store.state.BuySuccess);
       this.$store.commit("setSuccess", "");
     }
+    // localStorage.setItem("Success", this.dataLists1);
   },
   beforeDestroy() {
     this.$store.commit("setShow", true);
