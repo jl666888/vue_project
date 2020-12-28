@@ -6,16 +6,12 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <div class="order">
-      <van-card :price="list.price" :title="list.name" :thumb="list.pic" />
+    <div class="order" v-for="(item, index) in dataLists1" :key="'suc' + index">
+      <van-card :price="item.price" :title="item.name" :thumb="item.img" />
       <van-card class="details">
-        <template #desc> 
-          <div>
-            课程剩余节数：12节
-          </div>
-          <div class="refund">
-            如需退款请线下联系
-          </div>
+        <template #desc>
+          <div>课程剩余节数：12节</div>
+          <div class="refund">如需退款请线下联系</div>
         </template>
 
         <template #footer>
@@ -43,6 +39,7 @@ export default {
   data() {
     return {
       list: {},
+      dataLists1: [],
     };
   },
   methods: {
@@ -52,13 +49,13 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
+    this.dataLists1 = JSON.parse(localStorage.getItem("Success"));
+    // if (this.$store.state.BuySuccess) {
 
-    this.$http.get(`http://127.0.0.1/BK_2003/getList.php`).then((res) => {
-      if (res.status == 1) {
-        this.list = res.data[0];
-      }
-      // console.log(this.list.data);
-    });
+    //   // this.dataLists1.push(this.$store.state.BuySuccess);
+    //   this.$store.commit("setSuccess", "");
+    // }
+    // localStorage.setItem("Success", this.dataLists1);
   },
   beforeDestroy() {
     this.$store.commit("setShow", true);
@@ -96,7 +93,7 @@ export default {
   height: 80px;
   position: relative;
 }
-.refund{
+.refund {
   color: #989898;
   margin-top: 20px;
 }

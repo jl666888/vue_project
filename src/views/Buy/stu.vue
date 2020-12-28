@@ -24,18 +24,26 @@ Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(NavBar);
 Vue.use(Toast);
+
 export default {
   data() {
     return {
       result: [],
-      stu: ["张三", "李四"],
+      stu: [],
     };
   },
   created() {
-    this.$store.commit("setShow", false);
+    this.result = JSON.parse(localStorage.getItem("StuRes")) || [];
+
+    if (this.$store.state.Name1) {
+      this.stu = this.$store.state.Name1;
+    }
     if (this.$store.state.username) {
       this.stu.push(this.$store.state.username);
+      this.$store.commit("setName", "");
     }
+    localStorage.setItem("User", JSON.stringify(this.stu));
+    this.$store.commit("setShow", false);
   },
   methods: {
     add() {
@@ -46,6 +54,7 @@ export default {
         Toast.fail("请选择学员");
         return;
       }
+      localStorage.setItem("StuRes", JSON.stringify(this.result));
       localStorage.setItem("Buy", JSON.stringify({ result: this.result }));
       this.$store.commit("setStuNum", this.result.length);
       this.$router.push("/buy/buy1");

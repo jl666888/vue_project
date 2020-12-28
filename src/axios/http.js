@@ -9,8 +9,7 @@ axios.interceptors.request.use(config=>{
     if(token){
         config.headers.Authorization = token
     }
-    
-    return config
+    return config    
 
 })
 

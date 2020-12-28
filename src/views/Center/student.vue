@@ -7,8 +7,9 @@
       @click-left="onClickLeft"
     />
     <div class="man">学员管理</div>
-    <div class="manName">学员姓名</div>
-    <div class="manName">学员姓名</div>
+    <div class="manName" v-for="(item, index) in list" :key="'stu' + index">
+      {{ item }}
+    </div>
     <div class="btu">
       <!-- <van-button type="info" size="normal" class="stuBtu">新增学员</van-button> -->
     </div>
@@ -21,6 +22,11 @@ import { NavBar, Button } from "vant";
 Vue.use(NavBar);
 Vue.use(Button);
 export default {
+  data() {
+    return {
+      list: [],
+    };
+  },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
@@ -28,6 +34,9 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
+    this.list = localStorage.getItem("User")
+      ? JSON.parse(localStorage.getItem("User"))
+      : [];
   },
   beforeDestroy() {
     this.$store.commit("setShow", true);
@@ -36,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.xygl{
+.xygl {
   position: relative;
   height: 500px;
 }
@@ -56,13 +65,13 @@ export default {
   box-shadow: 0px 0px 10px #f3f3f3;
   text-indent: 2em;
 }
-.btu{
+.btu {
   text-align: center;
   // position: absolute;
   // bottom: 0;
-  margin-top:300px ;
+  margin-top: 300px;
 }
-.van-button{
+.van-button {
   width: 350px;
 }
 </style>

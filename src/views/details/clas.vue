@@ -5,7 +5,7 @@
 
     <div class="to">
       <!-- &lt;
-      <span style="margin-left:10px">详情页</span> -->
+      <span style="margin-left:10px">详情页</span>-->
       <van-nav-bar
         title="正常课程详情"
         left-text="返回"
@@ -31,7 +31,6 @@
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
-            @load="onLoad"
           >
             <van-cell
               v-for="(item, key) in arr"
@@ -125,20 +124,30 @@ export default {
       teacher: [],
       id: "",
       teacherName: "",
+      cid: "",
     };
   },
   created() {
+    this.$http
+      .get("http://127.0.0.1/BK_2003/details.php", {
+        params: { cid: this.$route.query.id },
+      })
+      .then((ret) => {
+        this.arr = ret.data;
+      });
     this.$store.commit("setShow", false);
-    this.arr = this.$store.state.defaltArr;
-    // console.log(this.arr);
     this.img = this.$store.state.titleArr[this.$route.query.key].pic;
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
     this.numbers = this.$store.state.titleArr[this.$route.query.key].numbers;
-    this.$http.get("http://127.0.0.1/BK_2003/getTeacher.php").then((ret) => {
-      this.teacher = ret;
-      this.teacherName = this.teacher[this.id].realname;
-    });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
+      )
+      .then((ret) => {
+        this.teacher = ret;
+        this.teacherName = this.teacher[this.id].realname;
+      });
     this.id = this.$route.query.key;
   },
   methods: {
@@ -146,16 +155,16 @@ export default {
       this.$router.go(-1);
     },
     onClick(name, title) {},
-    onLoad() {
-      // 异步更新数据
-      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      if (this.arr.length > 0) {
-        this.loading = true;
-        this.finished = true;
-      }
-    },
     onSubmit() {
-      this.$router.push("/buy/buy1");
+      this.$store.commit("setBuyData", {
+        name: this.name,
+        price: this.price,
+        img: this.img,
+      });
+      this.$router.push({
+        path: "/buy/buy1",
+        query: { id: this.$route.query.id },
+      });
     },
   },
 };
@@ -181,3 +190,5 @@ export default {
   clear: both;
 }
 </style>
+
+

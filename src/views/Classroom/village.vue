@@ -29,21 +29,27 @@ export default {
     };
   },
   created() {
-    this.$http.get("http://127.0.0.1/BK_2003/getLocation.php").then((ret) => {
-      ret.forEach((v, k) => {
-        if (k < 10) {
-          this.arr.push(v);
-        }
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool"
+      )
+      .then((ret) => {
+        ret.forEach((v, k) => {
+          if (k < 10) {
+            this.arr.push(v);
+          }
+        });
       });
-    });
   },
   methods: {
     fun: function (val) {
-      localStorage.setItem("query", val.name);
+      // console.log(val)
       this.$router.push({ path: "/classroom", query: { location: val.name } });
+      window.localStorage.setItem("query", val.name);
     },
     fun2: function () {
       this.$router.push({ path: "/classroom", query: { location: "" } });
+      window.localStorage.setItem("query", "");
     },
   },
 };

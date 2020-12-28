@@ -6,12 +6,12 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <div class="order">
+    <div class="order" v-for="(item, index) in dataList2" :key="'def' + index">
       <!-- <van-card :price="list.price" :title="list.name" :thumb="list.pic" /> -->
       <van-card
-        :price="list.price"
-        :title="list.name"
-        :thumb="list.pic"
+        :price="item.price"
+        :title="item.name"
+        :thumb="item.img"
         class="pay"
       >
         <template #desc>
@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       list: {},
+      dataList2: [],
       minutes: 15, //分
       seconds: 0, //秒
     };
@@ -98,14 +99,7 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
-
-    this.$http.get(`http://127.0.0.1/BK_2003/getList.php`).then((res) => {
-      if (res.status == 1) {
-        this.list = res.data[0];
-        console.log(this.list);
-      }
-      // console.log(res.data[0]);
-    });
+    this.dataList2 = JSON.parse(localStorage.getItem("Defeat"));
   },
   beforeDestroy() {
     this.$store.commit("setShow", true);

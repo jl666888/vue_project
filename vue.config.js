@@ -1,7 +1,7 @@
 module.exports = {
     devServer:{
         open:true,
-        port:3000,
+        port:3333,
         overlay:false,
         proxy:{
             '/api':{

@@ -57,12 +57,12 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
-    this.$http.get("http://127.0.0.1/BK_2003/getTeacher.php").then((ret) => {
+    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher").then((ret) => {
       for (var i = 1; i < 7; i++) {
         this.teacher.push(ret[i]);
       }
     });
-    this.$http.get("http://127.0.0.1/BK_2003/getLocation.php").then((ret) => {
+    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool").then((ret) => {
       for (var i = 1; i < 11; i++) {
         this.city.push(ret[i]);
       }

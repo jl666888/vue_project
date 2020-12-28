@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="yemian">
     <van-nav-bar
       title="关于我们"
       left-text="返回"
@@ -34,23 +34,22 @@ export default {
       this.$router.go(-1);
     },
   },
-  created(){
-    this.$store.commit("setShow",false)
+  created() {
+    this.$store.commit("setShow", false);
   },
-  beforeDestroy(){
-    this.$store.commit("setShow",true)
-  }
+  beforeDestroy() {
+    this.$store.commit("setShow", true);
+  },
 };
 </script>
 <style lang="scss" scoped>
 .yemian {
   text-align: center;
   padding: 0 46px;
-  
 }
-.yemian p:nth-child(3){
-    text-indent: 2em;
-  }
+.yemian p:nth-child(3) {
+  text-indent: 2em;
+}
 .pir {
   height: 250px;
   width: 380px;

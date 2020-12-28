@@ -52,17 +52,18 @@ export default {
               this.$store.commit("setToken", ret._token);
               Toast.success('登入成功');
                 setTimeout(()=>{
-                    this.$router.push('/classroom')
+                    this.$router.push('/')
+                    this.$store.commit('setShow',true)
                 },1000)
             } else {
               this.number++;
                 Toast.fail(ret.msg);
               if (this.number >= 3) {
                 this.one = "no";
-                Toast.fail('错误3++次,请在1分钟后重试');
+                Toast.fail('错误3++次,请在3秒钟后重试');
                 setTimeout(()=>{
                     this.one = 'yes'
-                },60*1000)
+                },3000)
               }
             }
           }else{
