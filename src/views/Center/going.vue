@@ -7,18 +7,48 @@
       @click-left="onClickLeft"
     />
     <div class="order" v-for="(item, index) in dataLists1" :key="'suc' + index">
-      <van-card :price="item.price" :title="item.name" :thumb="item.img" />
+      <van-card
+        class="VanCard"
+        :price="item.price + '/时'"
+        @click="fun(item)"
+        :title="item.name"
+        :thumb="item.img"
+      />
       <van-card class="details">
         <template #desc>
-          <div>课程剩余节数：12节</div>
+          <div v-show="item.id == id2[index]">
+            课程剩余节数：{{ number[index] }}节
+          </div>
+          <div v-show="item.id !== id2[index]">课程剩余节数：12节</div>
           <div class="refund">如需退款请线下联系</div>
         </template>
 
         <template #footer>
-          <van-button class="zxBut" square type="primary" color="#CBCBCB" plain
+          <van-button
+            class="zxBut"
+            square
+            type="primary"
+            color="#CBCBCB"
+            plain
+            v-if="item.id == id[index]"
+            >{{ zx }}</van-button
+          >
+
+          <van-button
+            class="zxBut"
+            square
+            type="primary"
+            color="#CBCBCB"
+            plain
+            @click="zxBut2(item)"
             >转校申请</van-button
           >
-          <van-button class="xfBut" square type="primary" color="#3279FD"
+          <van-button
+            class="xfBut"
+            square
+            type="primary"
+            color="#3279FD"
+            @click="xfBut(item)"
             >立即续费</van-button
           >
         </template>
@@ -40,25 +70,49 @@ export default {
     return {
       list: {},
       dataLists1: [],
+      zx: "",
+      id: [],
+      number: [],
+      num: 1,
+      id2: [],
     };
   },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
     },
+    fun: function (val) {
+      this.$router.push({
+        path: "/details/clas",
+        query: { key: val.key, id: val.id },
+      });
+    },
+    xfBut: function (val) {
+      this.$store.commit("setBuyData", val);
+
+      this.$router.push({ path: "/buy/buy1", query: { id: val.id, xf: 1 } });
+    },
+    zxBut2: function (val) {
+      this.$store.commit("setBuyData", val);
+      this.$router.push({ path: "/buy/buy1", query: { id: val.id, zx: 1 } });
+    },
   },
   created() {
     this.$store.commit("setShow", false);
     this.dataLists1 = JSON.parse(localStorage.getItem("Success"));
-    // if (this.$store.state.BuySuccess) {
 
-    //   // this.dataLists1.push(this.$store.state.BuySuccess);
-    //   this.$store.commit("setSuccess", "");
-    // }
-    // localStorage.setItem("Success", this.dataLists1);
-  },
-  beforeDestroy() {
-    this.$store.commit("setShow", true);
+    if (this.dataLists1) {
+      this.dataLists1.forEach((v, k) => {
+        if (v.zx) {
+          this.id.push(v.id);
+          this.zx = "审核中";
+        }
+        if (v.xf) {
+          this.id2.push(v.id);
+          this.number.push(12 * v.xf);
+        }
+      });
+    }
   },
 };
 </script>

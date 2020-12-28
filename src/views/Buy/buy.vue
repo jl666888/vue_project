@@ -3,10 +3,12 @@
     <div class="cnt">
       <div class="cnt_1">
         <p>
-          用户名称：<span>{{ user_name || "无" }}</span>
+          用户名称：
+          <span>{{ user_name || "无" }}</span>
         </p>
         <p>
-          用户手机：<span>{{ user_phone || "无" }}</span>
+          用户手机：
+          <span>{{ user_phone || "无" }}</span>
         </p>
       </div>
       <div class="cnt_2">
@@ -15,9 +17,7 @@
         </div>
         <div>
           <p>{{ dataList.name }}</p>
-          <p style="color: red">
-            ￥{{ dataList.price }}/{{ dataList.comment_num }}课时
-          </p>
+          <p style="color: red">￥{{ dataList.price }}/{{ dataList.comment_num }}课时</p>
         </div>
       </div>
       <div class="cnt123" style="margin-top: 5px; color: gray-6">
@@ -43,11 +43,7 @@
         />
       </div>
       <div style="margin-top: 5px">
-        <van-coupon-cell
-          :coupons="coupons"
-          :chosen-coupon="chosenCoupon"
-          @click="showList = true"
-        />
+        <van-coupon-cell :coupons="coupons" :chosen-coupon="chosenCoupon" @click="showList = true" />
         <van-popup
           :value="coupons[0].valueDesc"
           v-model="showList"
@@ -92,7 +88,7 @@ import {
   Divider,
   SwipeCell,
   Cell,
-  Icon,
+  Icon
 } from "vant";
 Vue.use(Icon);
 Vue.use(SwipeCell);
@@ -112,12 +108,12 @@ const coupon = {
   startAt: 1489104000,
   endAt: 1614592000,
   valueDesc: "200",
-  unitDesc: "元",
+  unitDesc: "元"
 };
-let List = JSON.parse(localStorage.getItem("BuyData"));
+let List = JSON.parse(localStorage.getItem("BuyData"))
 export default {
   components: {
-    Submit,
+    Submit
   },
   data() {
     return {
@@ -131,7 +127,7 @@ export default {
       youVal: 0,
       user_name: "",
       user_phone: "",
-      length: 0,
+      length: 0
     };
   },
   created() {
@@ -152,7 +148,7 @@ export default {
     }
   },
   methods: {
-    Teacher: function () {
+    Teacher: function() {
       this.$router.push("/buy/teacher");
     },
     onChange(index) {
@@ -166,15 +162,31 @@ export default {
     },
     onClickRight() {
       this.$store.commit("setSuc", this.dataList);
-      this.$router.push("/buy/stu");
+      if(this.$route.query.zx){
+        this.$router.push({ path: "/buy/stu",query:{zx:1} });
+
+      }else if(this.$route.query.xf){
+        this.$router.push({ path: "/buy/stu",query:{xf:1} });
+
+      }else{
+        this.$router.push({ path: "/buy/stu" });
+      }
     },
     onClickRight1() {
-      this.$router.push("/buy/teacher");
+      if(this.$route.query.zx){
+        this.$router.push({ path: "/buy/teacher",query:{zx:1} });
+
+      }else if(this.$route.query.xf){
+        this.$router.push({ path: "/buy/teacher",query:{xf:1} });
+
+      }else{
+        this.$router.push({ path: "/buy/teacher" });
+      }
     },
     onExchange(code) {
       this.coupons.push(coupon);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

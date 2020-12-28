@@ -9,8 +9,7 @@
           :title="item.name"
           :key="index"
           v-model="cityName"
-        >
-        </van-tab>
+        ></van-tab>
       </van-tabs>
     </div>
     <div class="img1">
@@ -94,7 +93,13 @@ export default {
       //   "Buy",
       //   JSON.stringify({ teach1: this.$store.state.teach })
       // );
-      this.$router.push("/buy/buy1");
+      if (this.$route.query.zx) {
+        this.$router.push({ path: "/buy/buy1", query: { zx: 1 } });
+      } else if (this.$route.query.xf) {
+        this.$router.push({ path: "/buy/buy1", query: { xf: 1 } });
+      } else {
+        this.$router.push({ path: "/buy/buy1" });
+      }
     },
   },
 };
