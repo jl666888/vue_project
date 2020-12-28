@@ -125,6 +125,7 @@ export default {
     },
   },
   created() {
+    this.$store.commit('setShow',true)
     this.$http.post("/api/getUser").then((ret) => {
       if (window.localStorage.getItem("token")) {
         this.$store.commit("setUsers", ret.data);
