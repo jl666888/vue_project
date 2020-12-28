@@ -57,7 +57,13 @@ export default {
       localStorage.setItem("StuRes", JSON.stringify(this.result));
       localStorage.setItem("Buy", JSON.stringify({ result: this.result }));
       this.$store.commit("setStuNum", this.result.length);
-      this.$router.push("/buy/buy1");
+       if (this.$route.query.zx) {
+        this.$router.push({ path: "/buy/buy1", query: { zx: 1 } });
+      } else if(this.$route.query.xf) {
+        this.$router.push({ path: "/buy/buy1" ,query:{xf:1}});
+      }else{
+        this.$router.push({path:'/buy/buy1'})
+      }
     },
   },
 };
