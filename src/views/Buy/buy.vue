@@ -131,17 +131,26 @@ export default {
     };
   },
   created() {
+
+     this.$http.post("/api/getUser").then(ret => {
+      if (window.localStorage.getItem("token")) {
+        this.$store.commit("setUsers", ret.data);
+        let users = JSON.parse(window.localStorage.getItem("users"));
+        if (users) {
+          this.user_name = users.username;
+          this.user_phone = users.phone
+        }
+      }
+    });
+  
     this.length = JSON.parse(localStorage.getItem("StuRes"))
       ? JSON.parse(localStorage.getItem("StuRes")).length
       : 0;
     this.dataList = this.$store.state.buyData;
+
     localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);
-    if (JSON.parse(localStorage.getItem("users"))) {
-      let users = JSON.parse(window.localStorage.getItem("users"));
-      this.user_name = users.username;
-      this.user_phone = users.phone;
-    }
+   
 
     if (!this.dataList) {
       this.dataList = List;

@@ -23,7 +23,7 @@
     <div>
       <van-popup v-model="show1">
         <img :src="'https:' + img1" />
-        <button @click="suc1">支付成功</button>
+        <button @click="suc1">支付完成</button>
       </van-popup>
     </div>
   </div>
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     onSubmit: async function () {
-      if (this.length < 0) {
+      if (this.length <= 0) {
         Toast.fail("请选择学员");
         return;
       }
@@ -71,7 +71,7 @@ export default {
       this.show = true;
       let qr = await this.$http.post(
         "https://m.28sjw.com/order/getQR.php",
-        "_s=BK2003&_f=0.01&_t=2"
+        "_t=2"
       );
       this.img1 = qr.qr_code;
       this.id = qr.order_id;

@@ -151,15 +151,22 @@ export default Vue.extend({
       this.bool = true;
     }
   },
+
+
   mounted() {
+    if(!JSON.parse(window.localStorage.getItem('titleArr'))){
+       this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getList").then(ret => {
+      this.$store.commit("setTitle", ret.data);
+      (function(){
+        window.location.reload() //刷新
+        this.bool = false;
+      })()
+    });
+    }
     new Swiper(".swiper-container", {
       slidesPerView: 3,
       spaceBetween: 30,
-      freeMode: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      }
+      
     });
   },
   methods: {
