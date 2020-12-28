@@ -74,10 +74,7 @@
 
         <van-cell
           title="实付"
-          :value="
-            '￥' +
-            (dataList.price * this.$store.state.Res.length - youVal / 100)
-          "
+          :value="'￥' + (dataList.price * length - youVal / 100)"
         />
       </van-swipe-cell>
     </div>
@@ -108,10 +105,10 @@ Vue.use(Toast);
 
 const coupon = {
   available: 1,
-  condition: "无使用门槛\n最多优惠12元",
+  condition: "无使用门槛\n最多优惠100元",
   reason: "",
   value: 20000,
-  name: "优惠券名称",
+  name: "优惠券",
   startAt: 1489104000,
   endAt: 1614592000,
   valueDesc: "200",
@@ -158,10 +155,11 @@ export default {
     Teacher: function () {
       this.$router.push("/buy/teacher");
     },
-
     onChange(index) {
-      if (this.$store.state.Res.length) {
+      if (index >= 0) {
         this.youVal = this.coupons[index].value;
+      } else {
+        this.youVal = 0;
       }
       this.showList = false;
       this.chosenCoupon = index;

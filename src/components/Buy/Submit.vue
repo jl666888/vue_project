@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      if (!this.$store.state.Res.length) {
+      if (this.length < 0) {
         Toast.fail("请选择学员");
         return;
       }

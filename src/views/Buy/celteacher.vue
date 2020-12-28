@@ -16,7 +16,7 @@
     <div class="img1">
       <div
         @click="Teach(index)"
-        :class="{ active1: isActive }"
+        :class="{ active1: isActive == index }"
         id="name1"
         v-for="(item, index) in teacher"
         :key="index"
@@ -49,7 +49,7 @@ export default {
     return {
       city: [],
       teacher: [],
-      isActive: false,
+      isActive: 0,
       cityName: "",
       teachId: 0,
       teacherName: "",
@@ -57,22 +57,31 @@ export default {
   },
   created() {
     this.$store.commit("setShow", false);
-    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher").then((ret) => {
-      for (var i = 1; i < 7; i++) {
-        this.teacher.push(ret[i]);
-      }
-    });
-    this.$http.get("https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool").then((ret) => {
-      for (var i = 1; i < 11; i++) {
-        this.city.push(ret[i]);
-      }
-    });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getTeacher"
+      )
+      .then((ret) => {
+        for (var i = 1; i < 7; i++) {
+          this.teacher.push(ret[i]);
+        }
+      });
+    this.$http
+      .get(
+        "https://www.fastmock.site/mock/e69183d9c2316e1982d198fe4e7d1d57/school/getSchool"
+      )
+      .then((ret) => {
+        for (var i = 1; i < 11; i++) {
+          this.city.push(ret[i]);
+        }
+      });
   },
   methods: {
     City11: function (name) {
       this.cityName = name;
     },
     Teach: function (id) {
+      this.isActive = id;
       this.teachId = id;
       this.teacherName = this.teacher[id].realname;
     },
