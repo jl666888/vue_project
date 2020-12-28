@@ -15,9 +15,6 @@
         </template>
 
         <template #footer>
-          <van-button class="zxBut" square type="primary" color="#CBCBCB" plain
-            >转校申请</van-button
-          >
           <van-button class="xfBut" square type="primary" color="#3279FD"
             >立即续费</van-button
           >
@@ -83,11 +80,6 @@ export default {
   position: absolute;
   bottom: 28px;
   right: 10px;
-}
-.zxBut {
-  position: absolute;
-  bottom: 28px;
-  right: 120px;
 }
 .details {
   height: 80px;
