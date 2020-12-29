@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <van-nav-bar title="消息" />
+  <div style="font-size:14px">
     <div class="xiaoxitongzhi">全部消息通知</div>
     <ul>
       <li v-for="(item, index) in list" :key="'m' + index">
         <div class="kechengxiaoxi">课程消息</div>
-        <p>亲爱的{{ user }}，您已购买{{ item.name }}课程，请记得上课</p>
+        亲爱的<span style="color:green;font-size:16px">{{ user }}</span>，您已购买<span style="color:green;font-size:16px">{{ item.name }}</span>课程，请记得上课
       </li>
     </ul>
   </div>
@@ -35,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .xiaoxitongzhi {
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
   border-left: 5px solid #3279fd;
   margin-top: 15px;
@@ -52,7 +51,7 @@ ul {
   margin-top: 20px;
 }
 .kechengxiaoxi {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 }
 p{

@@ -51,6 +51,7 @@ export default new Vuex.Store({
     },
     setBuyData: function (state, val) {
       state.buyData = val;
+      localStorage.setItem('BuyData',JSON.stringify(val))
     },
     setGrid: function (state, val) {
       state.grid = val;
@@ -59,7 +60,7 @@ export default new Vuex.Store({
     setDefalt: function (state, val) {
      
         state.defaltArr = val;
-        localStorage.setItem('defaltArr', JSON.stringify(val))
+        localStorage.setItem('defaltArr', JSON.stringify(state.defaltArr))
 
     },
     setTitle: function (state, val) {
@@ -69,11 +70,13 @@ export default new Vuex.Store({
     setToken: function (state, val) {
       state.token = val;
       window.localStorage.setItem('token', val)
+      
     },
     setUsers: function (state, val) {
       state.users = val
       window.localStorage.setItem('users', JSON.stringify(val))
-    }
+    },
+   
   },
   actions: {
   },

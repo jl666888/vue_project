@@ -3,10 +3,12 @@
     <div class="cnt">
       <div class="cnt_1">
         <p>
-          用户名称：<span>{{ user_name || "无" }}</span>
+          用户名称：
+          <span>{{ user_name || "无" }}</span>
         </p>
         <p>
-          用户手机：<span>{{ user_phone || "无" }}</span>
+          用户手机：
+          <span>{{ user_phone || "无" }}</span>
         </p>
       </div>
       <div class="cnt_2">
@@ -15,9 +17,7 @@
         </div>
         <div>
           <p>{{ dataList.name }}</p>
-          <p style="color: red">
-            ￥{{ dataList.price }}/{{ dataList.comment_num }}课时
-          </p>
+          <p style="color: red">￥{{ dataList.price }}/{{ dataList.comment_num }}课时</p>
         </div>
       </div>
       <div class="cnt123" style="margin-top: 5px; color: gray-6">
@@ -43,11 +43,7 @@
         />
       </div>
       <div style="margin-top: 5px">
-        <van-coupon-cell
-          :coupons="coupons"
-          :chosen-coupon="chosenCoupon"
-          @click="showList = true"
-        />
+        <van-coupon-cell :coupons="coupons" :chosen-coupon="chosenCoupon" @click="showList = true" />
         <van-popup
           :value="coupons[0].valueDesc"
           v-model="showList"
@@ -74,10 +70,7 @@
 
         <van-cell
           title="实付"
-          :value="
-            '￥' +
-            (dataList.price * this.$store.state.Res.length - youVal / 100)
-          "
+          :value="'￥' + (dataList.price * length - youVal / 100)"
         />
       </van-swipe-cell>
     </div>
@@ -95,7 +88,7 @@ import {
   Divider,
   SwipeCell,
   Cell,
-  Icon,
+  Icon
 } from "vant";
 Vue.use(Icon);
 Vue.use(SwipeCell);
@@ -108,19 +101,19 @@ Vue.use(Toast);
 
 const coupon = {
   available: 1,
-  condition: "无使用门槛\n最多优惠12元",
+  condition: "无使用门槛\n最多优惠100元",
   reason: "",
   value: 20000,
-  name: "优惠券名称",
+  name: "优惠券",
   startAt: 1489104000,
   endAt: 1614592000,
   valueDesc: "200",
-  unitDesc: "元",
+  unitDesc: "元"
 };
-let List = JSON.parse(localStorage.getItem("BuyData"));
+let List = JSON.parse(localStorage.getItem("BuyData"))
 export default {
   components: {
-    Submit,
+    Submit
   },
   data() {
     return {
@@ -134,49 +127,75 @@ export default {
       youVal: 0,
       user_name: "",
       user_phone: "",
-      length: 0,
+      length: 0
     };
   },
   created() {
+
+     this.$http.post("/api/getUser").then(ret => {
+      if (window.localStorage.getItem("token")) {
+        this.$store.commit("setUsers", ret.data);
+        let users = JSON.parse(window.localStorage.getItem("users"));
+        if (users) {
+          this.user_name = users.username;
+          this.user_phone = users.phone
+        }
+      }
+    });
+  
     this.length = JSON.parse(localStorage.getItem("StuRes"))
       ? JSON.parse(localStorage.getItem("StuRes")).length
       : 0;
     this.dataList = this.$store.state.buyData;
+
     localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);
-    if (JSON.parse(localStorage.getItem("users"))) {
-      let users = JSON.parse(window.localStorage.getItem("users"));
-      this.user_name = users.username;
-      this.user_phone = users.phone;
-    }
+   
 
     if (!this.dataList) {
       this.dataList = List;
     }
   },
   methods: {
-    Teacher: function () {
+    Teacher: function() {
       this.$router.push("/buy/teacher");
     },
-
     onChange(index) {
-      if (this.$store.state.Res.length) {
+      if (index >= 0) {
         this.youVal = this.coupons[index].value;
+      } else {
+        this.youVal = 0;
       }
       this.showList = false;
       this.chosenCoupon = index;
     },
     onClickRight() {
       this.$store.commit("setSuc", this.dataList);
-      this.$router.push("/buy/stu");
+      if(this.$route.query.zx){
+        this.$router.push({ path: "/buy/stu",query:{zx:1} });
+
+      }else if(this.$route.query.xf){
+        this.$router.push({ path: "/buy/stu",query:{xf:1} });
+
+      }else{
+        this.$router.push({ path: "/buy/stu" });
+      }
     },
     onClickRight1() {
-      this.$router.push("/buy/teacher");
+      if(this.$route.query.zx){
+        this.$router.push({ path: "/buy/teacher",query:{zx:1} });
+
+      }else if(this.$route.query.xf){
+        this.$router.push({ path: "/buy/teacher",query:{xf:1} });
+
+      }else{
+        this.$router.push({ path: "/buy/teacher" });
+      }
     },
     onExchange(code) {
       this.coupons.push(coupon);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

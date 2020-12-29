@@ -34,23 +34,22 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to,from,next)=>{
-//   let arr = [
-//     '/classroom',
-//     '/buy/buy1',
-//     '/center/await',
-//     '/center/going',
-//     '/center/success',
-//     '/center/all',
-//   ]
-//   arr.forEach((v,k)=>{
-//     if(to.path == v){
-//       if(!window.localStorage.getItem('token')){
-//         router.push('/login')
-//       }
-//     }
-//   })
-//   next()
-// })
+router.beforeEach((to,from,next)=>{
+  let arr = [
+    '/buy/buy1',
+    '/center/await',
+    '/center/going',
+    '/center/success',
+    '/center/all',
+  ]
+  arr.forEach((v,k)=>{
+    if(to.path == v){
+      if(!window.localStorage.getItem('token')){
+        router.push('/login')
+      }
+    }
+  })
+  next()
+})
 
 export default router
