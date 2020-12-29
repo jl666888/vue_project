@@ -62,9 +62,9 @@ export default {
         )
         .then(ret => {
           if (ret.error == 0) {
-            Toast.success(ret.msg + "正在前往登录界面,请稍后");
+            Toast.success(ret.msg);
             setTimeout(() => {
-              this.$router.push("/login2");
+              this.$router.go(-2);
             }, 1000);
           } else {
             Toast.fail(ret.msg);
