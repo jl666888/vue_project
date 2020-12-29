@@ -88,6 +88,8 @@ export default {
               name: suc.name,
               img: suc.img,
               pirce: suc.price,
+              id:suc.id,
+              key:suc.key
             });
             let arr = JSON.parse(localStorage.getItem("Defeat"))
               ? JSON.parse(localStorage.getItem("Defeat"))
