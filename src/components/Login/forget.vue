@@ -97,6 +97,8 @@ export default {
               }, 2000);
             }
           });
+      } else {
+        Toast.fail("验证码错误");
       }
     },
     func() {
@@ -119,6 +121,9 @@ export default {
             setTimeout(() => {
               this.show = false;
             }, 10000);
+            setTimeout(() => {
+              this.num = "";
+            }, 15000);
           }
         });
       }
