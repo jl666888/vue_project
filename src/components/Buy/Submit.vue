@@ -71,7 +71,7 @@ export default {
       this.show = true;
       let qr = await this.$http.post(
         "https://m.28sjw.com/order/getQR.php",
-        "_t=2"
+        "_s=BK2003&_f=0.01&_t=2"
       );
       this.img1 = qr.qr_code;
       this.id = qr.order_id;
@@ -96,7 +96,6 @@ export default {
               : [];
             arr.push(this.$store.state.Buydefeat);
             localStorage.setItem("Defeat", JSON.stringify(arr));
-            this.$router.push("/buy/defeated");
             this.$router.push("/buy/defeated");
           } else if (ret.data.order_status == 1) {
             if (this.$route.query.zx) {
@@ -141,7 +140,6 @@ export default {
               localStorage.setItem("Success", JSON.stringify(arr));
             }
 
-            this.$router.push("/buy/suc");
             this.$router.push("/buy/suc");
           }
         });
