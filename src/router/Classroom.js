@@ -1,7 +1,5 @@
 import Classroom from "@/views/Classroom/Classroom.vue"
 import Efficient from '@/views/Classroom/efficient.vue'
-
-
 import Search from '@/views/Classroom/search.vue'
 import Village from '@/views/Classroom/village.vue'
 

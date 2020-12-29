@@ -71,7 +71,7 @@ export default {
       this.show = true;
       let qr = await this.$http.post(
         "https://m.28sjw.com/order/getQR.php",
-        "_s=BK2003&_f=0.01&_t=2"
+        "_s=abc&_f=0.01&_t=2"
       );
       this.img1 = qr.qr_code;
       this.id = qr.order_id;
@@ -88,8 +88,8 @@ export default {
               name: suc.name,
               img: suc.img,
               pirce: suc.price,
-              id:suc.id,
-              key:suc.key
+              id: suc.id,
+              key: suc.key,
             });
             let arr = JSON.parse(localStorage.getItem("Defeat"))
               ? JSON.parse(localStorage.getItem("Defeat"))
@@ -139,7 +139,6 @@ export default {
               arr.push(this.$store.state.BuySuccess);
               localStorage.setItem("Success", JSON.stringify(arr));
             }
-
             this.$router.push("/buy/suc");
           }
         });
