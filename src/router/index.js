@@ -7,6 +7,8 @@ import DetailsRouter from './Details'
 import BuyRouter from './Buy'
 import Login from './Login'
 import register from './register'
+import Login2 from '@/components/Login/Login'
+import Forget from '@/components/Login/forget'
 Vue.use(VueRouter)
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -18,7 +20,8 @@ const routes = [
     component: ClassroomRouter,
     redirect:'/classroom'
   },
-  {path:'/login2',component:()=>import('@/components/Login/Login')},
+  {path:'/login2',component:Login2},
+  {path:'/login2/forget',component:Forget},
   Login,
   ...BuyRouter,
   ...CenterRouter,

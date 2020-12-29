@@ -1,6 +1,11 @@
 <template>
   <div>
-    <van-nav-bar title="登录" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar
+      title="登录"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
     <div>
       <van-form @submit="onSubmit">
         <van-field
@@ -18,8 +23,11 @@
           placeholder="密码"
           :rules="[{ required: true, message: '请填写密码' }]"
         />
-        <div style="margin: 16px;">
-          <van-button round block type="info" native-type="submit">登录</van-button>
+        <span class="wj" @click="forget">?忘记密码</span>
+        <div style="margin: 16px">
+          <van-button round block type="info" native-type="submit"
+            >登录</van-button
+          >
         </div>
       </van-form>
     </div>
@@ -41,14 +49,14 @@ export default {
       phone: "",
       password: "",
       number: 0,
-      one: ""
+      one: "",
     };
   },
   methods: {
     onSubmit(values) {
       this.$http
         .post("/api/login", `phone=${values.phone}&password=${values.password}`)
-        .then(ret => {
+        .then((ret) => {
           // console.log(ret)
           if (this.one !== "no") {
             if (ret.error == 0) {
@@ -74,12 +82,22 @@ export default {
           }
         });
     },
-    onClickLeft: function() {
+    onClickLeft: function () {
       this.$router.go(-1);
-    }
+    },
+    forget(){
+      this.$router.push('/login2/forget')
+    },
   },
   created() {
     this.$store.commit("setShow", false);
-  }
+  },
 };
 </script>
+<style lang="scss" scoped>
+.wj {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 12px;
+}
+</style>

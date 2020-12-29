@@ -82,7 +82,6 @@ export default {
           `https://m.28sjw.com/order/orderPayStatusCheck.php?_oid=${this.id}`
         )
         .then((ret) => {
-          console.log(ret);
           if (ret.data.order_status == 0) {
             let suc = JSON.parse(localStorage.getItem("BuyData"));
             this.$store.commit("setDefeat", {

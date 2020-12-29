@@ -70,6 +70,7 @@ export default new Vuex.Store({
     setToken: function (state, val) {
       state.token = val;
       window.localStorage.setItem('token', val)
+      
     },
     setUsers: function (state, val) {
       state.users = val
