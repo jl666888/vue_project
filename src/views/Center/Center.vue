@@ -34,40 +34,20 @@
       </div>
       <div class="list">
         <div @click="student1" class="myList">
-          <van-icon
-            class="iconfont icon-xueyuanguanli"
-            slot="icon"
-            size="1.9rem"
-          />
-          学员管理
+          <van-icon class="iconfont icon-xueyuanguanli" slot="icon" size="1.9rem" />学员管理
         </div>
         <div @click="coupon1" class="myList">
-          <van-icon
-            class="iconfont icon-youhuiquan"
-            slot="icon"
-            size="1.9rem"
-          />优惠券
+          <van-icon class="iconfont icon-youhuiquan" slot="icon" size="1.9rem" />优惠券
         </div>
         <div @click="consult1" class="myList">
-          <van-icon
-            class="iconfont icon-zixun"
-            slot="icon"
-            size="1.9rem"
-          />立即咨询
+          <van-icon class="iconfont icon-zixun" slot="icon" size="1.9rem" />立即咨询
         </div>
         <div @click="about1" class="myList">
-          <van-icon
-            class="iconfont icon-guanyuwomen"
-            slot="icon"
-            size="1.9rem"
-          />
-          关于我们
+          <van-icon class="iconfont icon-guanyuwomen" slot="icon" size="1.9rem" />关于我们
         </div>
       </div>
       <div class="but">
-        <van-button type="info" size="large" class="button" @click="unLogin"
-          >退出登录</van-button
-        >
+        <van-button type="info" size="large" class="button" @click="unLogin">退出登录</van-button>
       </div>
     </div>
   </div>
@@ -87,7 +67,7 @@ Vue.use(Row);
 export default {
   data() {
     return {
-      users: {},
+      users: {}
     };
   },
   methods: {
@@ -119,20 +99,27 @@ export default {
       this.$router.push("/center/about");
     },
     unLogin() {
-      window.localStorage.removeItem("users");
-      window.localStorage.removeItem("token");
-      window.location.href = window.location.href;
-    },
+      let users = window.localStorage.getItem('users')
+      this.$store.commit('setToken',{name:'token',time:-1,val:''})
+      if (users) {
+        window.localStorage.removeItem("users");
+        window.localStorage.removeItem("token");
+        window.location.href = window.location.href;
+      }
+    }
   },
   created() {
-    this.$store.commit('setShow',true)
-    this.$http.post("/api/getUser").then((ret) => {
-      if (window.localStorage.getItem("token")) {
+    
+    
+    this.$store.commit("setShow", true);
+    this.$http.post("/api/getUser").then(ret => {
+      if(ret.error==0){
         this.$store.commit("setUsers", ret.data);
-        let users = JSON.parse(window.localStorage.getItem("users"));
+         let users = JSON.parse(window.localStorage.getItem("users"));
         if (users) {
           this.users = users;
         }
+      
       }
     });
   },

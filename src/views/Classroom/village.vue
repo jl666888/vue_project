@@ -40,6 +40,7 @@ export default {
           }
         });
       });
+      this.$store.commit('setShow',false)
   },
   methods: {
     fun: function (val) {

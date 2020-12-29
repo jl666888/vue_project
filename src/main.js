@@ -30,10 +30,10 @@ if(title){
   store.commit('setTitle',title)
 }
 
-let token = window.localStorage.getItem('token') || ''
-if(token){
-  store.commit('setToken',token)
-}
+// let token = window.localStorage.getItem('token') || ''
+// if(token){
+//   store.commit('setToken',token)
+// }
 
 let user =  window.localStorage.getItem('users') == undefined ? '' : JSON.parse(window.localStorage.getItem('users')) 
 if(user){

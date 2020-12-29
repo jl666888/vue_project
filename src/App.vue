@@ -13,15 +13,7 @@ export default {
     return {};
   },
   components: {
-    Footer,
-  },
-  created() {
-    //获取用户信息
-  },
-  watch: {
-    $route() {
-      // console.log(this.$store.state.Res.length);
-    },
+    Footer
   },
 };
 </script>

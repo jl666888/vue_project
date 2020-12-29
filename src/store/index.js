@@ -69,7 +69,8 @@ export default new Vuex.Store({
     },
     setToken: function (state, val) {
       state.token = val;
-      window.localStorage.setItem('token', val)
+      document.cookie=`${val.name}=${val.val};expires=${val.time};path=/`
+      
     },
     setUsers: function (state, val) {
       state.users = val
