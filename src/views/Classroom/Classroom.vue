@@ -14,7 +14,7 @@
       </router-link>
       <van-swipe class="my-swipe" style="overflow: hidden" :autoplay="2000" indicator-color="white">
         <van-swipe-item v-for="(val, key) in $store.state.titleArr" :key="key">
-          <img :src="val.pic" />
+          <img :src="val.pic" style="width:100%" />
         </van-swipe-item>
       </van-swipe>
       <!-- 格子 -->
