@@ -100,7 +100,7 @@ export default {
     },
     unLogin() {
       let users = window.localStorage.getItem('users')
-      this.$store.commit('setToken',{name:'token',time:-1,val:'1'})
+      this.$store.commit('setToken',{name:'token',time:-1,val:''})
       if (users) {
         window.localStorage.removeItem("users");
         window.localStorage.removeItem("token");
