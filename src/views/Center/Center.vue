@@ -100,8 +100,8 @@ export default {
     },
     unLogin() {
       let users = window.localStorage.getItem('users')
-      let token = window.localStorage.getItem('token')
-      if (users && token) {
+      this.$store.commit('setToken',{name:'token',time:-1,val:'1'})
+      if (users) {
         window.localStorage.removeItem("users");
         window.localStorage.removeItem("token");
         window.location.href = window.location.href;
@@ -109,17 +109,20 @@ export default {
     }
   },
   created() {
+    
+    
     this.$store.commit("setShow", true);
     this.$http.post("/api/getUser").then(ret => {
-      if (window.localStorage.getItem("token")) {
+      if(ret.error==0){
         this.$store.commit("setUsers", ret.data);
-        let users = JSON.parse(window.localStorage.getItem("users"));
+         let users = JSON.parse(window.localStorage.getItem("users"));
         if (users) {
           this.users = users;
         }
+      
       }
     });
-  }
+  },
 };
 </script>
 

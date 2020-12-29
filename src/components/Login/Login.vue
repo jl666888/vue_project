@@ -49,10 +49,15 @@ export default {
       this.$http
         .post("/api/login", `phone=${values.phone}&password=${values.password}`)
         .then(ret => {
-          // console.log(ret)
+        
           if (this.one !== "no") {
             if (ret.error == 0) {
-              this.$store.commit("setToken", ret._token);
+            
+              let t = new Date();
+              t.setTime(t.getTime()-8*60*60*1000 + 60*10 * 1000 )
+        
+              this.$store.commit('setToken',{name:'token',val:ret._token,time:t})
+         
               Toast.success("登入成功");
               setTimeout(() => {
                 this.$router.go(-2);

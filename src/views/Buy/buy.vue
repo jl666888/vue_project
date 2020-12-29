@@ -131,9 +131,9 @@ export default {
     };
   },
   created() {
-
+    
      this.$http.post("/api/getUser").then(ret => {
-      if (window.localStorage.getItem("token")) {
+      if (ret.error == 0) {
         this.$store.commit("setUsers", ret.data);
         let users = JSON.parse(window.localStorage.getItem("users"));
         if (users) {
@@ -141,6 +141,7 @@ export default {
           this.user_phone = users.phone
         }
       }
+     
     });
   
     this.length = JSON.parse(localStorage.getItem("StuRes"))
