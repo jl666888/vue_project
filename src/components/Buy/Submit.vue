@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     onSubmit: async function () {
-      if (this.length < 0) {
+      if (this.length <= 0) {
         Toast.fail("请选择学员");
         return;
       }
@@ -94,7 +94,6 @@ export default {
               : [];
             arr.push(this.$store.state.Buydefeat);
             localStorage.setItem("Defeat", JSON.stringify(arr));
-            this.$router.push("/buy/defeated");
             this.$router.push("/buy/defeated");
           } else if (ret.data.order_status == 1) {
             if (this.$route.query.zx) {
@@ -138,8 +137,6 @@ export default {
               arr.push(this.$store.state.BuySuccess);
               localStorage.setItem("Success", JSON.stringify(arr));
             }
-
-            this.$router.push("/buy/suc");
             this.$router.push("/buy/suc");
           }
         });

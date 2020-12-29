@@ -36,7 +36,6 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
   let arr = [
-    '/classroom',
     '/buy/buy1',
     '/center/await',
     '/center/going',
