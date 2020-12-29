@@ -17,7 +17,9 @@
         </div>
         <div>
           <p>{{ dataList.name }}</p>
-          <p style="color: red">￥{{ dataList.price }}/{{ dataList.comment_num }}课时</p>
+          <p style="color: red">
+            ￥{{ dataList.price }}/{{ dataList.comment_num }}课时
+          </p>
         </div>
       </div>
       <div class="cnt123" style="margin-top: 5px; color: gray-6">
@@ -43,7 +45,11 @@
         />
       </div>
       <div style="margin-top: 5px">
-        <van-coupon-cell :coupons="coupons" :chosen-coupon="chosenCoupon" @click="showList = true" />
+        <van-coupon-cell
+          :coupons="coupons"
+          :chosen-coupon="chosenCoupon"
+          @click="showList = true"
+        />
         <van-popup
           :value="coupons[0].valueDesc"
           v-model="showList"
@@ -62,7 +68,7 @@
       </div>
       <van-divider />
     </div>
-    <div>
+    <div class="foo">
       <van-swipe-cell>
         <van-cell title="价格" :value="'￥' + dataList.price" />
         <van-cell title="学员数量" :value="length" />
@@ -88,7 +94,7 @@ import {
   Divider,
   SwipeCell,
   Cell,
-  Icon
+  Icon,
 } from "vant";
 Vue.use(Icon);
 Vue.use(SwipeCell);
@@ -108,12 +114,12 @@ const coupon = {
   startAt: 1489104000,
   endAt: 1614592000,
   valueDesc: "200",
-  unitDesc: "元"
+  unitDesc: "元",
 };
-let List = JSON.parse(localStorage.getItem("BuyData"))
+let List = JSON.parse(localStorage.getItem("BuyData"));
 export default {
   components: {
-    Submit
+    Submit,
   },
   data() {
     return {
@@ -127,22 +133,21 @@ export default {
       youVal: 0,
       user_name: "",
       user_phone: "",
-      length: 0
+      length: 0,
     };
   },
   created() {
-
-     this.$http.post("/api/getUser").then(ret => {
-      if (window.localStorage.getItem("token")) {
+    this.$http.post("/api/getUser").then((ret) => {
+      if (ret.error == 0) {
         this.$store.commit("setUsers", ret.data);
         let users = JSON.parse(window.localStorage.getItem("users"));
         if (users) {
           this.user_name = users.username;
-          this.user_phone = users.phone
+          this.user_phone = users.phone;
         }
       }
     });
-  
+
     this.length = JSON.parse(localStorage.getItem("StuRes"))
       ? JSON.parse(localStorage.getItem("StuRes")).length
       : 0;
@@ -150,14 +155,13 @@ export default {
 
     localStorage.setItem("BuyData", JSON.stringify(this.dataList));
     this.$store.commit("setShow", false);
-   
 
     if (!this.dataList) {
       this.dataList = List;
     }
   },
   methods: {
-    Teacher: function() {
+    Teacher: function () {
       this.$router.push("/buy/teacher");
     },
     onChange(index) {
@@ -171,31 +175,27 @@ export default {
     },
     onClickRight() {
       this.$store.commit("setSuc", this.dataList);
-      if(this.$route.query.zx){
-        this.$router.push({ path: "/buy/stu",query:{zx:1} });
-
-      }else if(this.$route.query.xf){
-        this.$router.push({ path: "/buy/stu",query:{xf:1} });
-
-      }else{
+      if (this.$route.query.zx) {
+        this.$router.push({ path: "/buy/stu", query: { zx: 1 } });
+      } else if (this.$route.query.xf) {
+        this.$router.push({ path: "/buy/stu", query: { xf: 1 } });
+      } else {
         this.$router.push({ path: "/buy/stu" });
       }
     },
     onClickRight1() {
-      if(this.$route.query.zx){
-        this.$router.push({ path: "/buy/teacher",query:{zx:1} });
-
-      }else if(this.$route.query.xf){
-        this.$router.push({ path: "/buy/teacher",query:{xf:1} });
-
-      }else{
+      if (this.$route.query.zx) {
+        this.$router.push({ path: "/buy/teacher", query: { zx: 1 } });
+      } else if (this.$route.query.xf) {
+        this.$router.push({ path: "/buy/teacher", query: { xf: 1 } });
+      } else {
         this.$router.push({ path: "/buy/teacher" });
       }
     },
     onExchange(code) {
       this.coupons.push(coupon);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -229,5 +229,8 @@ export default {
   div:nth-child(2) {
     margin: 12px 8px 10px;
   }
+}
+.foo {
+  margin-bottom: 50px;
 }
 </style>

@@ -5,7 +5,6 @@
       <img style="" src="@/assets/logo.png" alt="" />
       <p style="margin-top: 30px">不忘初心 做有温度的教育</p>
     </div>
-    <!-- 按钮 -->
     <div class="button">
       <van-button round type="info" @click="register">注册</van-button>
       <van-button round type="info" @click="login">登录</van-button>

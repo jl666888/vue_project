@@ -13,9 +13,8 @@ export default {
     return {};
   },
   components: {
-    Footer,
+    Footer
   },
-
 };
 </script>
 <style lang="scss">

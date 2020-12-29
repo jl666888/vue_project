@@ -5,9 +5,15 @@ axios.interceptors.response.use(ret=>{
 })
 
 axios.interceptors.request.use(config=>{
-    let token = window.localStorage.getItem('token');
-    if(token){
-        config.headers.Authorization = token
+   
+    let token = document.cookie.split('; ')
+    let obj ={}
+    token.forEach(v=>{
+        let arr = v.split('=')
+        obj[arr[0]] = arr[1]
+    })
+     if(obj.token){
+        config.headers.Authorization = obj.token
     }
     return config    
 

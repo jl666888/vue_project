@@ -14,7 +14,7 @@
       </router-link>
       <van-swipe class="my-swipe" style="overflow: hidden" :autoplay="2000" indicator-color="white">
         <van-swipe-item v-for="(val, key) in $store.state.titleArr" :key="key">
-          <img :src="val.pic" />
+          <img :src="val.pic" style="width:100%" />
         </van-swipe-item>
       </van-swipe>
       <!-- 格子 -->
@@ -53,11 +53,11 @@
                   <div>
                     <!-- swiper图片位置 -->
                     <img
-                      style="width: 124px; display: block"
+                      style="width: 100%; display: block"
                       :src="val.pic"
                       @click="swiperImg(key2, val.id)"
                     />
-                    <div class="content" style="text-align: center">
+                    <div class="content" style="width: 100%;text-align: center">
                       {{ val.name }}
                       <p
                         style="float: left; fontsize: 14px; margin: 0 10px 0"
@@ -74,11 +74,11 @@
                   <div>
                     <!-- swiper图片位置 -->
                     <img
-                      style="width: 124px; display: block"
+                      style="width: 100%; display: block"
                       :src="val.pic"
                       @click="swiperImg(key2, val.id)"
                     />
-                    <div class="content" style="text-align: center">
+                    <div class="content" style="text-align: center;width:100%">
                       {{ val.name }}
                       <p
                         style="float: left; fontsize: 16px; margin: 0 10px 0"
@@ -95,11 +95,11 @@
                   <div>
                     <!-- swiper图片位置 -->
                     <img
-                      style="width: 124px; display: block"
+                      style="width: 100%; display: block"
                       :src="val.pic"
                       @click="swiperImg(key2, val.id)"
                     />
-                    <div class="content" style="text-align: center">
+                    <div class="content" style="text-align: center;width:100%">
                       {{ val.name }}
                       <p
                         style="float: left; fontsize: 16px; margin: 0 10px 0"
@@ -165,7 +165,7 @@ export default Vue.extend({
     }
     new Swiper(".swiper-container", {
       slidesPerView: 3,
-      spaceBetween: 30,
+      spaceBetween: 15,
       
     });
   },
