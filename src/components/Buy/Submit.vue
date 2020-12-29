@@ -71,7 +71,7 @@ export default {
       this.show = true;
       let qr = await this.$http.post(
         "https://m.28sjw.com/order/getQR.php",
-        "_t=2"
+        "_s=abc&_f=0.01&_t=2"
       );
       this.img1 = qr.qr_code;
       this.id = qr.order_id;
@@ -82,14 +82,15 @@ export default {
           `https://m.28sjw.com/order/orderPayStatusCheck.php?_oid=${this.id}`
         )
         .then((ret) => {
+          console.log(ret);
           if (ret.data.order_status == 0) {
             let suc = JSON.parse(localStorage.getItem("BuyData"));
             this.$store.commit("setDefeat", {
               name: suc.name,
               img: suc.img,
               pirce: suc.price,
-              id:suc.id,
-              key:suc.key
+              id: suc.id,
+              key: suc.key,
             });
             let arr = JSON.parse(localStorage.getItem("Defeat"))
               ? JSON.parse(localStorage.getItem("Defeat"))
