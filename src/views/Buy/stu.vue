@@ -59,9 +59,15 @@ export default {
       this.$store.commit("setStuNum", this.result.length);
        if (this.$route.query.zx) {
         this.$router.push({ path: "/buy/buy1", query: { zx: 1 } });
-      } else if(this.$route.query.xf) {
+      }else if(this.$route.query.ok && this.$route.query.xf){
+        this.$router.push({path:'/buy/buy1',query:{ok:this.$route.query.ok,xf:this.$route.query.xf}})
+      }
+      else if(this.$route.query.xf) {
         this.$router.push({ path: "/buy/buy1" ,query:{xf:1}});
-      }else{
+      }else if(this.$route.query.ok){
+        this.$router.push({path:'/buy/buy1',query:{ok:this.$route.query.ok}})
+      }
+      else{
         this.$router.push({path:'/buy/buy1'})
       }
     },

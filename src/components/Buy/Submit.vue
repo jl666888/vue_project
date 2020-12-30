@@ -1,23 +1,13 @@
 <template>
   <div>
     <div>
-      <van-submit-bar
-        :price="money"
-        button-text="立即支付"
-        @submit="onSubmit"
-      />
+      <van-submit-bar :price="money" button-text="立即支付" @submit="onSubmit" />
     </div>
     <div>
-      <van-popup
-        v-model="show"
-        position="bottom"
-        :style="{ height: '30%', fontSize: '20px' }"
-      >
+      <van-popup v-model="show" position="bottom" :style="{ height: '30%', fontSize: '20px' }">
         确认支付
         <van-button round type="info" @click="dian1">确认支付</van-button>
-        <van-button round plain type="primary" @click="dian2"
-          >取消支付</van-button
-        >
+        <van-button round plain type="primary" @click="dian2">取消支付</van-button>
       </van-popup>
     </div>
     <div>
@@ -45,7 +35,7 @@ export default {
       img: "",
       num: 1,
       img1: "",
-      id: "",
+      id: ""
     };
   },
   created() {
@@ -59,7 +49,7 @@ export default {
     }
   },
   methods: {
-    onSubmit: async function () {
+    onSubmit: async function() {
       if (this.length <= 0) {
         Toast.fail("请选择学员");
         return;
@@ -81,7 +71,7 @@ export default {
         .get(
           `https://m.28sjw.com/order/orderPayStatusCheck.php?_oid=${this.id}`
         )
-        .then((ret) => {
+        .then(ret => {
           if (ret.data.order_status == 0) {
             let suc = JSON.parse(localStorage.getItem("BuyData"));
             this.$store.commit("setDefeat", {
@@ -89,13 +79,14 @@ export default {
               img: suc.img,
               pirce: suc.price,
               id: suc.id,
-              key: suc.key,
+              key: suc.key
             });
             let arr = JSON.parse(localStorage.getItem("Defeat"))
               ? JSON.parse(localStorage.getItem("Defeat"))
               : [];
             arr.push(this.$store.state.Buydefeat);
             localStorage.setItem("Defeat", JSON.stringify(arr));
+
             this.$router.push("/buy/defeated");
           } else if (ret.data.order_status == 1) {
             if (this.$route.query.zx) {
@@ -110,6 +101,21 @@ export default {
                 });
               }
               window.localStorage.setItem("Success", JSON.stringify(Success));
+            } else if (this.$route.query.xf && this.$route.query.ok) {
+              let suc1 = JSON.parse(localStorage.getItem("BuyData"));
+              let id = suc1.id;
+              let Success = JSON.parse(window.localStorage.getItem("Success"));
+              if (Success) {
+                Success.forEach((v, k) => {
+                  if (v.id == id) {
+                    v.xf = ++v.xf || 2;
+                  }
+                });
+              }
+              let suc2 = JSON.parse(localStorage.getItem("Defeat"));
+              suc2.splice(this.$route.query.ok, 1);
+              window.localStorage.setItem("Defeat", JSON.stringify(suc2));
+              window.localStorage.setItem("Success", JSON.stringify(Success));
             } else if (this.$route.query.xf) {
               let suc = JSON.parse(localStorage.getItem("BuyData"));
               let id = suc.id;
@@ -122,6 +128,10 @@ export default {
                 });
               }
               window.localStorage.setItem("Success", JSON.stringify(Success));
+            } else if (this.$route.query.ok) {
+              let suc = JSON.parse(localStorage.getItem("Defeat"));
+              suc.splice(this.$route.query.ok, 1);
+              window.localStorage.setItem("Defeat", JSON.stringify(suc));
             } else {
               let Success = JSON.parse(localStorage.getItem("Success"));
 
@@ -131,7 +141,7 @@ export default {
                 img: suc.img,
                 price: suc.price,
                 id: suc.id,
-                key: suc.key,
+                key: suc.key
               });
               let arr = JSON.parse(localStorage.getItem("Success"))
                 ? JSON.parse(localStorage.getItem("Success"))
@@ -202,8 +212,8 @@ export default {
       // arr.push(this.$store.state.Buydefeat);
       // localStorage.setItem("Defeat", JSON.stringify(arr));
       // this.$router.push("/buy/defeated");
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -69,7 +69,11 @@ export default {
 
               Toast.success("登入成功");
               setTimeout(() => {
+                if(this.$route.query._R){
+                  this.$router.go(-3)
+                }else{
                 this.$router.go(-2);
+                }
                 this.$store.commit("setShow", true);
               }, 1000);
             } else {

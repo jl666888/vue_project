@@ -41,7 +41,8 @@ export default {
       list: {},
       dataList2: [],
       minutes: 15, //分
-      seconds: 0 //秒
+      seconds: 0, //秒,
+      bool:false
     };
   },
   methods: {
@@ -90,12 +91,29 @@ export default {
           id: val.id,
           key: val.key
         });
-        this.$router.push({ path: "/buy/buy1", query: { id: val.id } });
+        // this.$router.push({ path: "/buy/buy1", query: { id: val.id,ok:key } });
+
+        let Success = JSON.parse(window.localStorage.getItem("Success"));
+
+        Success.forEach((v, k) => {
+          if (v.id == val.id) {
+            this.bool = true;
+            this.$router.push({
+              path: "/buy/buy1",
+              query: { id: val.id,ok:key, xf: 1 }
+            });
+          }
+        });
+        if (!this.bool) {
+          this.$router.push({
+            path: "/buy/buy1",
+            query: { id: val.id ,ok:key}
+          });
+        }
       }
       //取消支付
       if (e.target.name == "no") {
         Dialog.confirm({
-          
           message: "是否取消支付"
         })
           .then(() => {

@@ -177,8 +177,13 @@ export default {
       this.$store.commit("setSuc", this.dataList);
       if (this.$route.query.zx) {
         this.$router.push({ path: "/buy/stu", query: { zx: 1 } });
-      } else if (this.$route.query.xf) {
+      }else if(this.$route.query.ok && this.$route.query.xf){
+        this.$router.push({path:'/buy/stu',query:{ok:this.$route.query.ok,xf:this.$route.query.xf}})
+      }
+       else if (this.$route.query.xf) {
         this.$router.push({ path: "/buy/stu", query: { xf: 1 } });
+      }else if(this.$route.query.ok){
+        this.$router.push({path:'/buy/stu',query:{ok:this.$route.query.ok}})
       } else {
         this.$router.push({ path: "/buy/stu" });
       }
@@ -186,9 +191,15 @@ export default {
     onClickRight1() {
       if (this.$route.query.zx) {
         this.$router.push({ path: "/buy/teacher", query: { zx: 1 } });
-      } else if (this.$route.query.xf) {
+      }else if(this.$route.query.ok && this.$route.query.xf){
+        this.$router.push({path:'/buy/teacher',query:{ok:this.$route.query.ok,xf:this.$route.query.xf}})
+      } 
+      else if (this.$route.query.xf) {
         this.$router.push({ path: "/buy/teacher", query: { xf: 1 } });
-      } else {
+      }else if(this.$route.query.ok){
+        this.$router.push({path:'/buy/teacher',query:{ok:this.$route.query.ok}})
+      } 
+      else {
         this.$router.push({ path: "/buy/teacher" });
       }
     },

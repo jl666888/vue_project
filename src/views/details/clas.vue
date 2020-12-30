@@ -101,7 +101,8 @@ export default {
       teacher: [],
       id: "",
       teacherName: "",
-      cid: ""
+      cid: "",
+      bool: false
     };
   },
   created() {
@@ -142,10 +143,23 @@ export default {
         id: this.$store.state.titleArr[this.$route.query.key].id,
         key: this.id
       });
-      this.$router.push({
-        path: "/buy/buy1",
-        query: { id: this.$route.query.id }
+      let Success = JSON.parse(window.localStorage.getItem("Success"));
+
+      Success.forEach((v, k) => {
+        if (v.id == this.$route.query.id) {
+          this.bool = true;
+          this.$router.push({
+            path: "/buy/buy1",
+            query: { id: this.$route.query.id, xf: 1 }
+          });
+        }
       });
+      if (!this.bool) {
+        this.$router.push({
+          path: "/buy/buy1",
+          query: { id: this.$route.query.id }
+        });
+      }
     }
   }
 };

@@ -64,7 +64,8 @@ export default {
           if (ret.error == 0) {
             Toast.success(ret.msg);
             setTimeout(() => {
-              this.$router.go(-2);
+              
+              this.$router.push({path:'/login2',query:{_R:1}})
             }, 1000);
           } else {
             Toast.fail(ret.msg);
