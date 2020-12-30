@@ -138,11 +138,6 @@ export default {
   bottom: 28px;
   right: 10px;
 }
-.zxBut {
-  position: absolute;
-  bottom: 28px;
-  right: 120px;
-}
 .details {
   height: 80px;
   position: relative;

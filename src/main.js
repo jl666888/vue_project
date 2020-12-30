@@ -13,7 +13,7 @@ let Buy = JSON.parse(localStorage.getItem('BuyData')) || ''
 if(Buy){
   store.commit('setBuyData',Buy);
 }
-let defalt = JSON.parse(window.localStorage.getItem('defaltArr')) || ''
+let defalt = JSON.parse(window.localStorage.getItem('defaltArr')) 
 if(defalt){
   store.commit('setDefalt',defalt)
 }

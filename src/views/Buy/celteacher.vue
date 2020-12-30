@@ -30,7 +30,7 @@
     </div>
     <div class="footer">
       <van-button type="primary" @click="submit1" size="large"
-        >大号按钮</van-button
+        >选择</van-button
       >
     </div>
   </div>
