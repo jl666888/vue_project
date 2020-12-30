@@ -104,7 +104,6 @@ Vue.use(CouponList);
 Vue.use(NavBar);
 Vue.use(Cell);
 Vue.use(Toast);
-
 const coupon = {
   available: 1,
   condition: "无使用门槛\n最多优惠100元",
