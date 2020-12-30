@@ -20,7 +20,7 @@
 
     <!--  -->
     <h3 style="margin-top:30px;margin-bottom:30px">{{msg}}</h3>
-    <van-grid :gutter="10" :column-num="2" :icon-size="125" style="background:#f4f4f4">
+    <van-grid :gutter="10" :column-num="2" :icon-size="105" style="background:#f4f4f4">
       <van-grid-item
         v-for="(val,key) in arr"
         :key="key"
