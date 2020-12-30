@@ -117,7 +117,7 @@ export default {
       });
     this.$store.commit("setShow", false);
     this.img = this.$store.state.titleArr[this.$route.query.key].pic;
-    console.log(this.img)
+    console.log(this.img);
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
     this.numbers = this.$store.state.titleArr[this.$route.query.key].numbers;
@@ -145,16 +145,18 @@ export default {
         key: this.id
       });
       let Success = JSON.parse(window.localStorage.getItem("Success"));
+      if (Success) {
+        Success.forEach((v, k) => {
+          if (v.id == this.$route.query.id) {
+            this.bool = true;
+            this.$router.push({
+              path: "/buy/buy1",
+              query: { id: this.$route.query.id, xf: 1 }
+            });
+          }
+        });
+      }
 
-      Success.forEach((v, k) => {
-        if (v.id == this.$route.query.id) {
-          this.bool = true;
-          this.$router.push({
-            path: "/buy/buy1",
-            query: { id: this.$route.query.id, xf: 1 }
-          });
-        }
-      });
       if (!this.bool) {
         this.$router.push({
           path: "/buy/buy1",
