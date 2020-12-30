@@ -5,7 +5,13 @@
     <ul>
       <li v-for="(item, index) in list" :key="'m' + index">
         <div class="kechengxiaoxi">课程消息</div>
-        <p>亲爱的<span style="color:green;font-size:14px">{{ user }}</span>，您已购买<span style="color:green;font-size:14px">{{ item.name }}</span>课程，请记得上课</p>
+        <p>
+          亲爱的<span style="color: green; font-size: 14px">{{ user }}</span
+          >，您已购买<span style="color: green; font-size: 14px">{{
+            item.name
+          }}</span
+          >课程，请记得上课
+        </p>
       </li>
     </ul>
   </div>
@@ -14,7 +20,6 @@
 import Vue from "vue";
 import { NavBar } from "vant";
 Vue.use(NavBar);
-
 export default {
   data() {
     return {
@@ -35,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .xiaoxitongzhi {
-   font-size: 18px;
+  font-size: 18px;
   font-weight: bold;
   border-left: 5px solid #3279fd;
   margin-top: 15px;
