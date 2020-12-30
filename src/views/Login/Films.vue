@@ -2,7 +2,7 @@
   <div class="login">
     <!-- 图标 -->
     <div class="logo">
-      <img style="" src="@/assets/logo.png" alt="" />
+      <img style="width:150px" src="@/assets/logo.png" alt="" />
       <p style="margin-top: 30px">不忘初心 做有温度的教育</p>
     </div>
     <div class="button">
