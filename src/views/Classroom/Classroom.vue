@@ -202,8 +202,6 @@ export default Vue.extend({
   text-align: center;
   background-color: #39a9ed;
   float: left;
-}
-.my-swipe .van-swipe-item[data-v-1ec788a6] {
   line-height: 60px;
   background: #f4f4f4;
 }
