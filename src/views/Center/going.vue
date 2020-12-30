@@ -34,15 +34,7 @@
             >{{ zx }}</van-button
           >
 
-          <van-button
-            class="zxBut"
-            square
-            type="primary"
-            color="#CBCBCB"
-            plain
-            @click="zxBut2(item)"
-            >转校申请</van-button
-          >
+      
           <van-button
             class="xfBut"
             square
@@ -92,10 +84,7 @@ export default {
 
       this.$router.push({ path: "/buy/buy1", query: { id: val.id, xf: 1 } });
     },
-    zxBut2: function (val) {
-      this.$store.commit("setBuyData", val);
-      this.$router.push({ path: "/buy/buy1", query: { id: val.id, zx: 1 } });
-    },
+    
   },
   created() {
     this.$store.commit("setShow", false);
