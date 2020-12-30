@@ -35,15 +35,6 @@
           >
 
           <van-button
-            class="zxBut"
-            square
-            type="primary"
-            color="#CBCBCB"
-            plain
-            @click="zxBut2(item)"
-            >转校申请</van-button
-          >
-          <van-button
             class="xfBut"
             square
             type="primary"
