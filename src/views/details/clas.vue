@@ -140,6 +140,7 @@ export default {
       });
     this.$store.commit("setShow", false);
     this.img = this.$store.state.titleArr[this.$route.query.key].pic;
+    console.log(this.img)
     this.name = this.$store.state.titleArr[this.$route.query.key].name;
     this.price = this.$store.state.titleArr[this.$route.query.key].pay_price;
     this.numbers = this.$store.state.titleArr[this.$route.query.key].numbers;
