@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-bottom:50px">
     <van-nav-bar title="消息" />
     <div class="xiaoxitongzhi">全部消息通知</div>
     <ul>
