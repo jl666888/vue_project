@@ -57,6 +57,7 @@ export default {
       this.$http
         .post("/api/login", `phone=${values.phone}&password=${values.password}`)
         .then((ret) => {
+          // console.log(ret)
           if (this.one !== "no") {
             if (ret.error == 0) {
               let t = new Date();
@@ -76,19 +77,11 @@ export default {
                 }
                 this.$store.commit("setShow", true);
               }, 1000);
-            } else {
-              this.number++;
-              Toast.fail(ret.msg);
-              if (this.number >= 3) {
-                this.one = "no";
-                Toast.fail("错误3++次,请在3秒钟后重试");
-                setTimeout(() => {
-                  this.one = "yes";
-                }, 3000);
-              }
+            }else
+
+            {
+              Toast.fail(ret.msg)
             }
-          } else {
-            Toast.fail("时候未到,请稍后");
           }
         });
     },
