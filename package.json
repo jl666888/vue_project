@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "build": "^0.1.4",
     "core-js": "^3.6.5",
     "swiper": "^6.4.5",
     "vant": "^2.12.0",

@@ -88,7 +88,7 @@ export default {
           return;
         }
         this.$http
-          .post("http://127.0.0.1:8080/setPwd", `phone=${this.phone}&password=${this.password}`)
+          .post("http:/localhost:8080/setPwd", `phone=${this.phone}&password=${this.password}`)
           .then((ret) => {
             if (ret.error == 0) {
               Toast.success(ret.msg);

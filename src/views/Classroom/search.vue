@@ -64,7 +64,7 @@ export default {
     },
     HotSearch: function(key) {
       this.$http
-        .get("http://127.0.0.1/BK_2003/getSearch.php", {
+        .get("http://localhost/getSearch.php", {
           params: {
             word: this.HotWord[key]
           }
@@ -77,7 +77,7 @@ export default {
     search2:function(){
       let index = this.list.indexOf(this.value)
      
-      this.$http.get("http://127.0.0.1/BK_2003/getSearch.php",{
+      this.$http.get("http://localhost/getSearch.php",{
         params:{
           word:this.HotWord[index]
         }

@@ -17,7 +17,6 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    component: ClassroomRouter,
     redirect: '/classroom'
   },
   {path:'/login2',component:Login2},

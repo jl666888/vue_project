@@ -11,6 +11,13 @@ module.exports = {
                     '^/api':''
                 }
             },
+            '/v1':{
+                target:'http://127.0.0.1/BK_2003',
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/api':''
+                }
+            }
         }
     }
 }

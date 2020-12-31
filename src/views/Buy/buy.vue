@@ -136,7 +136,7 @@ export default {
     };
   },
   created() {
-    this.$http.post("/api/getUser").then((ret) => {
+    this.$http.post("http://localhost:8080/getUser").then((ret) => {
       if (ret.error == 0) {
         this.$store.commit("setUsers", ret.data);
         let users = JSON.parse(window.localStorage.getItem("users"));

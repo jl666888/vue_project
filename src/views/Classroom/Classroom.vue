@@ -13,7 +13,7 @@
         </span>
       </router-link>
       <van-swipe class="my-swipe" style="overflow: hidden" :autoplay="2000" indicator-color="white">
-        <van-swipe-item v-for="(val, key) in $store.state.titleArr" :key="key">
+        <van-swipe-item v-for="(val, key) in $store.state.titleArr" :key="key" >
           <img :src="val.pic" style="width:100%" />
         </van-swipe-item>
       </van-swipe>
@@ -198,11 +198,9 @@ export default Vue.extend({
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;
-  line-height: 150px;
   text-align: center;
-  background-color: #39a9ed;
   float: left;
-  line-height: 60px;
+  line-height: 0px;
   background: #f4f4f4;
 }
 .content {

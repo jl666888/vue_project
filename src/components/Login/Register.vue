@@ -57,7 +57,7 @@ export default {
     onSubmit(values) {
       this.$http
         .post(
-          "/api/info",
+          "http://localhost:8080/info",
           `username=${values.username}&phone=${values.phone}&password=${values.password}`
         )
         .then(ret => {
