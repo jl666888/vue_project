@@ -107,7 +107,7 @@ export default {
   },
   created() {
     this.$http
-      .get("http://localhost/details.php", {
+      .get("/v1/details.php", {
         params: { cid: this.$route.query.id }
       })
       .then(ret => {

@@ -55,7 +55,7 @@ export default {
   methods: {
     onSubmit(values) {
       this.$http
-        .post("http://localhost:8080/login", `phone=${values.phone}&password=${values.password}`)
+        .post("/api/login", `phone=${values.phone}&password=${values.password}`)
         .then((ret) => {
           if (this.one !== "no") {
             if (ret.error == 0) {

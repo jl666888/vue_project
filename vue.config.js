@@ -15,7 +15,7 @@ module.exports = {
                 target:'http://127.0.0.1/BK_2003',
                 changeOrigin:true,
                 pathRewrite:{
-                    '^/api':''
+                    '^/v1':''
                 }
             }
         }
